@@ -8,11 +8,15 @@
 # การใช้งาน
 ### 1. การเปลี่ยนภาษา 
 1. ไปที่ URL: http://127.0.0.1:8000/ เพื่อเข้าสู่เว็บไซต์
-![Home](image\image_manual\Home.png)
+![Home](..image\image_manual\Home.png)
 2. กดเมนูภาษาที่เขียนว่า English
 3. เลือกภาษาที่ต้องการ
 
 ### 2. highlighs
 1.  ไปที่ URL: http://127.0.0.1:8000/ เพื่อเข้าสู่เว็บไซต์
+
+![Home](..image\image_manual\Home.png)
+
 2.  Login ในฐานนะ Admin
+
 3.  เพิ่มหรือแก้ไขข้อมูลในส่วนของ Highlighs 
