@@ -1,0 +1,47 @@
+# Install libraries
+pip install selenium
+apt-get update #To update ubuntu to correctly run apt install
+apt install chromium-chromedriver
+apt install pandas
+pip install lxml
+cp /usr/lib/chromium-browser/chromedriver /usr/bin
+
+
+
+#Import libraries
+import sys
+import time
+import pandas as pd
+import pymysql
+from bs4 import BeautifulSoup
+from chromedriver_py import binary_path # this will get you the path variable
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys #นำเข้าโมดูล Keys.
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
+
+# Set-up search environment
+sys.path.insert(0,'/usr/lib/chromium-browser/chromedriver') #Create path
+chromeOptions = webdriver.ChromeOptions()
+chromeOptions.add_argument('--headless')
+chromeOptions.add_argument('--no-sandbox')
+chromeOptions.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('chromedriver', options = chromeOptions) #Using Chrom
+driver.get('https://tci-thailand.org/wp-content/themes/magazine-style/tci_search/advance_search.html')
+
+select = Select(driver.find_element_by_name("criteria[]"))
+select.select_by_value('author')
+x = driver.find_element_by_name('keyword[]') #กำหนดให้ x คือ element ที่ต้องการ
+x.send_keys('Khamron Sunat')  #ทำการส่งค่าลงไปใน element
+x.send_keys(Keys.ENTER) #ใช้คำสั่ง Keys.ENTER เพื่อส่งค่าปุ่ม ENTER
+time.sleep(3)
+soup = BeautifulSoup(driver.page_source, 'lxml')
+
+a=soup.find('div',{'class': 'filter_panel card col-md-9'})
+b=a.find('div',{'class': 'content'})
+
+results=[]
+for result in b.find_all('div', attrs = {'class': 'content'}):
+  results.append(result.find("p").text)
+
+print(results);
