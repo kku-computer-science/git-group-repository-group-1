@@ -239,7 +239,7 @@ class HomeController extends Controller
 
         //return $paper_tci;
 
-
+//
         $paper_wos = Paper::whereHas('source', function ($query) {
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();
