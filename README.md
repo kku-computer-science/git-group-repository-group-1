@@ -12,8 +12,3 @@
 | 6   | 653380349-0 | นายอธิภัทร ภูด่านวัว                |
 ---
 
-
-### 📌**Sprint 1**
-The Product Backlog Items selected to be edited:
-1. Present the highlights to all visitors.
-    
