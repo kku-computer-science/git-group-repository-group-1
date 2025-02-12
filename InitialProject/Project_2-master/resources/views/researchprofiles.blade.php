@@ -47,17 +47,22 @@
             </div>
             <div class="col-md-6">
                 <div class="card-body">
-                    <h6 class="card-text"><b>{{$res->position_th}} {{$res->fname_th}} {{$res->lname_th}}</b></h6>
+                @if(app()->getLocale() == 'en')
+
                     @if($res->doctoral_degree == 'Ph.D.')
-                    <h6 class="card-text"><b>{{$res->fname_en}} {{$res->lname_en}}, {{$res->doctoral_degree}} </b>
-                        @else
-                        <h6 class="card-text"><b>{{$res->fname_en}} {{$res->lname_en}}</b>
-                            @endif</h6>
-                        <h6 class="card-text1"><b>{{$res->academic_ranks_en}}</b></h6>
+                    <h5 class="card-title">{{ $res->{'fname_'.app()->getLocale()} }} {{ $res->{'lname_'.app()->getLocale()} }}, {{$res->doctoral_degree}}
+                    @else
+                    <h5 class="card-title">{{ $res->{'fname_'.app()->getLocale()} }} {{ $res->{'lname_'.app()->getLocale()} }}</h5>
+                    @endif
+                    <h5 class="card-title-2">{{ $res->{'academic_ranks_'.app()->getLocale()} }}</h5>
+                    @else
+                    <h5 class="card-title">{{ $res->{'position_'.app()->getLocale()} }} {{ $res->{'fname_'.app()->getLocale()} }} {{ $res->{'lname_'.app()->getLocale()} }}
+                    </h5>
+                    @endif
                         <!-- <h6 class="card-text1">Department of {{$res->program->program_name_en}}</h6> -->
                         <!-- <h6 class="card-text1">College of Computing</h6>
                     <h6 class="card-text1">Khon Kaen University</h6> -->
-                        <h6 class="card-text1">E-mail: {{$res->email}}</h6>
+                        <h6 class="card-text1">{{ trans('message.email') }} : {{$res->email}}</h6>
                         <h6 class="card-title">{{ trans('message.education') }}</h6>
                         @foreach( $res->education as $edu)
                         <h6 class="card-text2 col-sm-10"> {{$edu->year}} {{$edu->qua_name}} {{$edu->uname}}</h6>
@@ -131,7 +136,7 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Summary</button>
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">{{ App::getLocale() == 'th' ? 'งานวิจัยทั้งหมด' : 'Summary' }}</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="scopus-tab" data-bs-toggle="tab" data-bs-target="#scopus" type="button" role="tab" aria-controls="scopus" aria-selected="false">SCOPUS</button>
@@ -143,10 +148,10 @@
             <button class="nav-link" id="tci-tab" data-bs-toggle="tab" data-bs-target="#tci" type="button" role="tab" aria-controls="tci" aria-selected="false">TCI</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">หนังสือ</button>
+            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">{{ App::getLocale() == 'th' ? 'หนังสือ' : 'Book' }}</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="patent-tab" data-bs-toggle="tab" data-bs-target="#patent" type="button" role="tab" aria-controls="patent" aria-selected="false">ผลงานวิชาการด้านอื่นๆ</button>
+            <button class="nav-link" id="patent-tab" data-bs-toggle="tab" data-bs-target="#patent" type="button" role="tab" aria-controls="patent" aria-selected="false">{{trans('message.otherWork')}}</button>
         </li>
     </ul>
     <br>
@@ -154,7 +159,7 @@
 
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="tab-content" style="padding-bottom: 20px;">
-                <a class="btn btn-success" href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">Export To Excel</a>
+                <a class="btn btn-success" href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">{{trans('message.exportExcel')}}</a>
             </div>
             <table id="example1" class="table table-striped" style="width:100%">
                 <thead>
@@ -162,16 +167,16 @@
                         <th><a href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">#Export</a></td>
                     </tr> -->
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th>Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th>Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'แหล่งอ้างอิง' : 'Ciations'}}</th>
                         <th>Doi</th>
-                        <th>Source</th>
+                        <th>{{ App::getLocale() == 'th' ? 'เว็บไซต์ที่มา' : 'Source'}}</th>
                     </tr>
                 </thead>
 
@@ -220,14 +225,14 @@
             <table id="example2" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
+                        <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'แหล่งอ้างอิง' : 'Ciations'}}</th>
                         <th>Doi</th>
                     </tr>
                 </thead>
@@ -256,29 +261,25 @@
                         <td>{{$paper->paper_sourcetitle}}</td>
                         <td>{{$paper->paper_citation}}</td>
                         <td>{{$paper->paper_doi}}</td>
-
-
                     </tr>
                     @endforeach
                 </tbody>
 
             </table>
-
-
         </div>
         <div class="tab-pane fade" id="wos" role="tabpanel" aria-labelledby="wos-tab">
 
             <table id="example3" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
+                        <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'แหล่งอ้างอิง' : 'Ciations'}}</th>
                         <th>Doi</th>
                     </tr>
                 </thead>
@@ -308,29 +309,25 @@
                         <td>{{$paper->paper_sourcetitle}}</td>
                         <td>{{$paper->paper_citation}}</td>
                         <td>{{$paper->paper_doi}}</td>
-
-
                     </tr>
                     @endforeach
                 </tbody>
 
             </table>
-
-
         </div>
 
         <div class="tab-pane fade" id="tci" role="tabpanel" aria-labelledby="tci-tab">
             <table id="example4" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Year</th>
-                        <th style="width:90%;">Paper Name</th>
-                        <th>Author</th>
-                        <th>Document Type</th>
-                        <th style="width:100%;">Page</th>
-                        <th>Journals/Transactions</th>
-                        <th>Ciations</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
+                        <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
+                        <th>{{ App::getLocale() == 'th' ? 'แหล่งอ้างอิง' : 'Ciations'}}</th>
                         <th>Doi</th>
                     </tr>
                 </thead>
@@ -371,12 +368,12 @@
             <table id="example5" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">สถานที่พิมพ์</th>
-                        <th scope="col">Page</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ปีที่ตีพิมพ์' : 'Year' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ชื่อหนังสือ' : 'Name' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'สถานที่พิมพ์' : 'Publication Location' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'จำนวนหน้า' : 'Page' }}Page</th>
 
                     </tr>
                 </thead>
@@ -413,12 +410,12 @@
             <table id="example6" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">ประเภท</th>
-                        <th scope="col">หมายเลขทะเบียน</th>
-                        <th scope="col">วันที่จดทะเบียน</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Name' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Category / Type' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'หมายเลขทะเบียน' : 'Registration Number' }}</th>
+                        <th scope="col">{{ App::getLocale() == 'th' ? 'วันที่จดทะเบียน' : 'Registration Date' }}</th>
 
                     </tr>
                 </thead>
@@ -663,7 +660,7 @@
         //$("#scopus").append('data-to="100"');
         document.getElementById("all").innerHTML += `   
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">SUMMARY</p>`
+                <p class="count-text ">{{ trans ('message.summary') }}</p>`
 
         document.getElementById("scopus_sum").innerHTML += `   
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>

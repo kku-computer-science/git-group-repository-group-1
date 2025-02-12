@@ -14,7 +14,7 @@
             <div class="col-md-4">
                 <div class="card-body">
                     <img src="{{asset('img/'.$rg->group_image)}}" alt="...">
-                    <h1 class="card-text-1"> Laboratory Supervisor </h1>
+                    <h1 class="card-text-1"> {{trans('message.groupLeader')}} </h1>
                     <h2 class="card-text-2">
                         @foreach ($rg->user as $r)
                         @if($r->hasRole('teacher'))
@@ -35,7 +35,7 @@
                         @endif
                         @endforeach
                     </h2>
-                    <h1 class="card-text-1"> Student </h1>
+                    <h1 class="card-text-1"> {{trans('message.groupStudent')}} </h1>
                     <h2 class="card-text-2">
                         @foreach ($rg->user as $user)
                         @if($user->hasRole('student'))

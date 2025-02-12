@@ -76,7 +76,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($dn as $department)
                             <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
-                                    {{$department->program_name_en}}</a>
+                            {{ App::getLocale() === 'th' ? $department->program_name_th : $department->program_name_en }}</a>
                             </li>
                             @endforeach
                         </ul>

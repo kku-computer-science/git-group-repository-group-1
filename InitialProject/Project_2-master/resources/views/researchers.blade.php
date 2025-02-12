@@ -1,17 +1,17 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container card-2">
-    <p class="title"> Researchers </p>
+    <p class="title">{{ trans('message.Researchers') }}</p>
     @foreach($request as $res)
     <span>
-        <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_en}}
+        <ion-icon name="caret-forward-outline" size="small"></ion-icon>{{ $res->{'program_name_'.app()->getLocale()} }}
     </span>
     <div class="d-flex">
         <div class="ml-auto">
             <form class="row row-cols-lg-auto g-3" method="GET" action="{{ route('searchresearchers',['id'=>$res->id])}}">
                 <div class="col-md-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="textsearch" placeholder="Research interests">
+                        <input type="text" class="form-control" name="textsearch" placeholder="{{ App::getLocale() == 'th' ? 'งานวิจัยที่สนใจ' : 'Research interests' }}">
                     </div>
                 </div>
                 <!-- <div class="col-12">
@@ -24,7 +24,7 @@
                         </select>
                     </div> -->
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                    <button type="submit" class="btn btn-outline-primary">{{ trans('message.search') }}</button>
                 </div>
             </form>
         </div>
@@ -48,8 +48,6 @@
                                 @else
                                 <h5 class="card-title">{{ $r->{'fname_'.app()->getLocale()} }} {{ $r->{'lname_'.app()->getLocale()} }}</h5>
                                 @endif
-
-
                                 <!-- <h5 class="card-title">{{ $r->{'fname_'.app()->getLocale()} }} {{ $r->{'lname_'.app()->getLocale()} }}</h5> -->
                                 <h5 class="card-title-2">{{ $r->{'academic_ranks_'.app()->getLocale()} }}</h5>
                                 @else

@@ -2,24 +2,24 @@
 @section('content')
 
 <div class="container refund">
-    <p>โครงการบริการวิชาการ/ โครงการวิจัย</p>
+    <p>{{trans('message.researchProject')}}</p>
 
     <div class="table-refund table-responsive">
         <table id="example1" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th style="font-weight: bold;">ลำดับ</th>
-                    <th class="col-md-1" style="font-weight: bold;">ปี</th>
-                    <th class="col-md-4" style="font-weight: bold;">ชื่อโครงการ </th>
+                    <th style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ปี' : 'Year' }}</th>
+                    <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ชื่อโครงการ' : 'Project Name' }} </th>
                     <!-- <th>ระยะเวลาโครงการ</th>
                     <th>ผู้รับผิดชอบโครงการ</th>
                     <th>ประเภททุนวิจัย</th>
                     <th>หน่วยงานที่สนันสนุนทุน</th>
                     <th>งบประมาณที่ได้รับจัดสรร</th> -->
-                    <th class="col-md-4" style="font-weight: bold;">รายละเอียด</th>
-                    <th class="col-md-2" style="font-weight: bold;">ผู้รับผิดชอบโครงการ</th>
+                    <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'รายละเอียด' : 'Details' }}</th>
+                    <th class="col-md-2" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ผู้รับผิดชอบโครงการ' : 'Project Manager' }}</th>
                     <!-- <th class="col-md-5">หน่วยงานที่รับผิดชอบ</th> -->
-                    <th class="col-md-1" style="font-weight: bold;">สถานะ</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'สถานะ' : 'Status' }}</th>
                 </tr>
             </thead>
 
@@ -38,14 +38,14 @@
 
                             @if ($re->project_start != null)
                             <span style="font-weight: bold;">
-                                ระยะเวลาโครงการ
+                                {{trans('message.projectDuration')}}
                             </span>
                             <span style="padding-left: 10px;">
                                 {{\Carbon\Carbon::parse($re->project_start)->thaidate('j F Y') }} ถึง {{\Carbon\Carbon::parse($re->project_end)->thaidate('j F Y') }}
                             </span>
                             @else
                             <span style="font-weight: bold;">
-                                ระยะเวลาโครงการ
+                                {{trans('message.projectDuration')}}
                             </span>
                             <span>
 
@@ -77,29 +77,29 @@
                     </td> -->
                         <!-- <td>{{$re->budget}}</td> -->
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">ประเภททุนวิจัย</span>
+                            <span style="font-weight: bold;">{{trans('message.projectFund')}}</span>
                             <span style="padding-left: 10px;"> @if(is_null($re->fund))
                                 @else
                                 {{$re->fund->fund_type}}
                                 @endif</span>
                         </div>
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">หน่วยงานที่สนันสนุนทุน</span>
+                            <span style="font-weight: bold;">{{trans('message.projectFundAgent')}}</span>
                             <span style="padding-left: 10px;"> @if(is_null($re->fund))
                                 @else
                                 {{$re->fund->support_resource}}
                                 @endif</span>
                         </div>
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">หน่วยงานที่รับผิดชอบ</span>
+                            <span style="font-weight: bold;">{{trans('message.projectRespon')}}</span>
                             <span style="padding-left: 10px;">
                                 {{$re->responsible_department}}
                             </span>
                         </div>
                         <div style="padding-bottom: 10px;">
 
-                            <span style="font-weight: bold;">งบประมาณที่ได้รับจัดสรร</span>
-                            <span style="padding-left: 10px;"> {{number_format($re->budget)}} บาท</span>
+                            <span style="font-weight: bold;">{{trans('message.projectBudget')}}</span>
+                            <span style="padding-left: 10px;"> {{number_format($re->budget)}} {{ App::getLocale() == 'th' ? 'บาท' : 'Bath' }}</span>
                         </div>
                     </td>
 
@@ -112,15 +112,15 @@
                     </td>
                     @if($re->status == 1)
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge badge-success">ยื่นขอ</label></h6>
+                        <h6><label class="badge badge-success">{{ App::getLocale() == 'th' ? 'ยื่นขอ' : 'Apply for a request' }}</label></h6>
                     </td>
                     @elseif($re->status == 2)
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge bg-warning text-dark">ดำเนินการ</label></h6>
+                        <h6><label class="badge bg-warning text-dark">{{ App::getLocale() == 'th' ? 'ดำเนินการ' : 'In progress' }}</label></h6>
                     </td>
                     @else
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge bg-dark">ปิดโครงการ</label>
+                        <h6><label class="badge bg-dark">{{ App::getLocale() == 'th' ? 'ปิดโครงการ' : 'Project closed' }}</label>
                             <h6>
                     </td>
                     @endif
