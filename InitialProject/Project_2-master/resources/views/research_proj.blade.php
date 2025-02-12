@@ -8,8 +8,8 @@
         <table id="example1" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                    <th class="col-md-1" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ปี' : 'Year' }}</th>
+                    <th style="font-weight: bold;">{{trans('message.no')}}</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{trans('message.year')}}</th>
                     <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ชื่อโครงการ' : 'Project Name' }} </th>
                     <!-- <th>ระยะเวลาโครงการ</th>
                     <th>ผู้รับผิดชอบโครงการ</th>
@@ -19,7 +19,7 @@
                     <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'รายละเอียด' : 'Details' }}</th>
                     <th class="col-md-2" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ผู้รับผิดชอบโครงการ' : 'Project Manager' }}</th>
                     <!-- <th class="col-md-5">หน่วยงานที่รับผิดชอบ</th> -->
-                    <th class="col-md-1" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'สถานะ' : 'Status' }}</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{trans('message.status')}}</th>
                 </tr>
             </thead>
 

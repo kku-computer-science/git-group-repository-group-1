@@ -847,7 +847,7 @@
             html += '</table>';
 
             this.container.find('.drp-calendar.' + side + ' .calendar-table').html(html);
-
+            
         },
 
         renderTimePicker: function(side) {
