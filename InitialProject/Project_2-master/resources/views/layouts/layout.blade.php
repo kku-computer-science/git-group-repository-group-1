@@ -119,7 +119,7 @@
                 </span>
                 @else
                 <span class="nav-item">
-                    <a class="btn-solid-sm" href="/login" target="_blank">Login</a>
+                    <a class="btn-solid-sm" href="/login" target="_blank">{{trans('message.login')}}</a>
                 </span>
                 @endauth
                 @endif

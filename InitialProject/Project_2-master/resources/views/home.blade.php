@@ -278,7 +278,7 @@
 
         title: {
             display: true,
-            text: '{{ trans('message.barChart1') }}',
+            text: "{{ trans('message.barChart1') }}",
             fontSize: 20
         }
 

@@ -148,7 +148,7 @@
             <button class="nav-link" id="tci-tab" data-bs-toggle="tab" data-bs-target="#tci" type="button" role="tab" aria-controls="tci" aria-selected="false">TCI</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">{{ App::getLocale() == 'th' ? 'หนังสือ' : 'Book' }}</button>
+            <button class="nav-link" id="book-tab" data-bs-toggle="tab" data-bs-target="#book" type="button" role="tab" aria-controls="book" aria-selected="false">{{trans('message.book')}}</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="patent-tab" data-bs-toggle="tab" data-bs-target="#patent" type="button" role="tab" aria-controls="patent" aria-selected="false">{{trans('message.otherWork')}}</button>
@@ -167,10 +167,10 @@
                         <th><a href="{{ route('excel', ['id' => $res->id]) }}" target="_blank">#Export</a></td>
                     </tr> -->
                     <tr>
-                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th>{{trans('message.no')}}</th>
+                        <th>{{trans('message.year')}}</th>
                         <th>{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{trans('message.author')}}</th>
                         <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
                         <th>{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
                         <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
@@ -225,10 +225,10 @@
             <table id="example2" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th>{{trans('message.no')}}</th>
+                        <th>{{trans('message.year')}}</th>
                         <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{trans('message.author')}}</th>
                         <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
                         <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
                         <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
@@ -272,10 +272,10 @@
             <table id="example3" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th>{{trans('message.no')}}</th>
+                        <th>{{trans('message.year')}}</th>
                         <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{trans('message.author')}}</th>
                         <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
                         <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
                         <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
@@ -320,10 +320,10 @@
             <table id="example4" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ปีที่เผยแพร่' : 'Year' }}</th>
+                        <th>{{trans('message.no')}}</th>
+                        <th>{{trans('message.year')}}</th>
                         <th style="width:90%;">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Paper Name' }}</th>
-                        <th>{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th>{{trans('message.author')}}</th>
                         <th>{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Document Type' }}</th>
                         <th style="width:100%;">{{ App::getLocale() == 'th' ? 'หน้าที่' : 'Page' }}</th>
                         <th>{{ App::getLocale() == 'th' ? 'วารสาร/สำนักพิมพ์' : 'Journals/Transactions' }}</th>
@@ -368,10 +368,10 @@
             <table id="example5" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
-                        <th scope="col">{{ App::getLocale() == 'th' ? 'ปีที่ตีพิมพ์' : 'Year' }}</th>
+                        <th scope="col">{{trans('message.no')}}</th>
+                        <th scope="col">{{trans('message.year')}}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'ชื่อหนังสือ' : 'Name' }}</th>
-                        <th scope="col">{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th scope="col">{{trans('message.author')}}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'สถานที่พิมพ์' : 'Publication Location' }}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'จำนวนหน้า' : 'Page' }}Page</th>
 
@@ -410,9 +410,9 @@
             <table id="example6" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">{{ App::getLocale() == 'th' ? 'ลำดับที่' : 'No.' }}</th>
+                        <th scope="col">{{trans('message.no')}}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'ชื่องานวิจัย' : 'Name' }}</th>
-                        <th scope="col">{{ App::getLocale() == 'th' ? 'ผู้แต่ง' : 'Author' }}</th>
+                        <th scope="col">{{trans('message.author')}}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'ประเภทของงานวิจัย' : 'Category / Type' }}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'หมายเลขทะเบียน' : 'Registration Number' }}</th>
                         <th scope="col">{{ App::getLocale() == 'th' ? 'วันที่จดทะเบียน' : 'Registration Date' }}</th>
