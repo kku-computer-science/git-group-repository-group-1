@@ -2,7 +2,9 @@
 
 ## 1. การเปลี่ยนภาษา 
 1. ไปที่ URL: https://cs05sec167.cpkkuhost.com เพื่อเข้าใช้งานระบบ
-[![Home](Doc\image_manual\Home.png)]
+
+![Home](..\image_manual\Home.png)
+
 2. กดเมนูภาษาที่เขียนว่า English
 3. เลือกภาษาที่ต้องการ
 
