@@ -10,6 +10,7 @@ use Bibtex;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
+use App\Models\Highlight;
 
 class HomeController extends Controller
 {
@@ -179,7 +180,13 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-        return view('home', compact('papers'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+        //Highlights
+        // Fetch active highlights sorted by priority
+        $highlights = Highlight::where('status', 'active')
+        ->orderBy('priority', 'asc')
+        ->get();
+
+        return view('home', compact('papers', 'highlights'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))
@@ -192,6 +199,28 @@ class HomeController extends Controller
         // return $papers;
         // (DB::raw('YEAR(paper_yearpub)')
         //return view('home',compact('papers'));
+        
+        //Highlights
+        // Fetch active highlights sorted by priority
+        $highlights = Highlight::where('status', 'active')
+        ->orderBy('priority', 'asc')
+        ->get();
+
+        // Fetch existing data
+        $papers = [];
+        $year = range(Carbon::now()->year - 4, Carbon::now()->year);
+        $years = range(Carbon::now()->year, Carbon::now()->year - 5);
+
+        $num = $this->getnum();
+        $paper_tci_numall = $num['paper_tci'];
+        $paper_scopus_numall = $num['paper_scopus'];
+        $paper_wos_numall = $num['paper_wos'];
+
+        return view('home', compact('papers', 'highlights'))
+            ->with('year', json_encode($year, JSON_NUMERIC_CHECK))
+            ->with('paper_tci_numall', json_encode($paper_tci_numall, JSON_NUMERIC_CHECK))
+            ->with('paper_scopus_numall', json_encode($paper_scopus_numall, JSON_NUMERIC_CHECK))
+            ->with('paper_wos_numall', json_encode($paper_wos_numall, JSON_NUMERIC_CHECK));
     }
 
     public function getnum()
@@ -210,7 +239,7 @@ class HomeController extends Controller
 
         //return $paper_tci;
 
-
+//
         $paper_wos = Paper::whereHas('source', function ($query) {
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();

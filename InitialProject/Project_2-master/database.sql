@@ -956,3 +956,77 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-18 23:35:07
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 12, 2025 at 04:57 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `myapp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `highlights`
+--
+
+CREATE TABLE `highlights` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `priority` int(11) DEFAULT 1,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `highlights`
+--
+
+INSERT INTO `highlights` (`id`, `title`, `description`, `image_url`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(4, 'banner1', 'no1', 'storage/uploads/highlights/9GNuS1r7mL0HtN8so7KsiA844xlYsMYlN6c64GO7.png', 1, 'active', '2025-02-12 13:43:53', '2025-02-12 15:15:21'),
+(5, 'banner2', 'no2', 'storage/uploads/highlights/1zOlVO3VuZA8jK5FZREC689nA6SeT0o8EZsWgivT.png', 2, 'active', '2025-02-12 13:44:18', '2025-02-12 13:44:26'),
+(6, 'banner3', 'no3', 'storage/uploads/highlights/80FxnTZJn8HreRROcTrHhMAJhQKCkE92pX4oa2SG.png', 3, 'active', '2025-02-12 13:44:56', '2025-02-12 13:44:56'),
+(7, 'lala', 'as', 'storage/uploads/highlights/DaBLhGH4brzY73c5DVqwihdR7KUgxm5f6bWk1dnd.png', 4, 'active', '2025-02-12 15:52:16', '2025-02-12 15:53:01');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `highlights`
+--
+ALTER TABLE `highlights`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `highlights`
+--
+ALTER TABLE `highlights`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
