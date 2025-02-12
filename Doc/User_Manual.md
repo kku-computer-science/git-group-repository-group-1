@@ -18,5 +18,5 @@
 ![Home page](../image/image_manual/Home.jpg)
 
 2.  Login ในฐานนะ Admin
-
+![Login page](../image/image_manual/login.jpg)
 3.  เพิ่มหรือแก้ไขข้อมูลในส่วนของ Highlighs 
