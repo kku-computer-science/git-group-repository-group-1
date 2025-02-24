@@ -113,7 +113,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{trans('message.reference2')}}</h5>
+                    <h5 class="modal-title">Reference (APA)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="name">
@@ -161,7 +161,7 @@
                                     <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
-                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{trans('message.reference1')}}]</button>
+                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
                                 </p>
                             </div>
                         </div>
@@ -278,7 +278,7 @@
 
         title: {
             display: true,
-            text: "{{ trans('message.barChart1') }}",
+            text: 'Report the total number of articles ( 5 years : cumulative)',
             fontSize: 20
         }
 
@@ -307,7 +307,7 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">{{trans('message.summary')}}</p>`
+                <p class="count-text ">SUMMARY</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>

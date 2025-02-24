@@ -28,27 +28,27 @@
                     </div>
                     <h4 class="text-center p-2">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h4>
                     <input type="file" name="admin_image" id="admin_image" style="opacity: 0;height:1px;display:none">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>{{trans('message.changePic')}}</b></a>
+                    <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>Change picture</b></a>
                 </div>
 
             </div>
             <div class="nav flex-column nav-pills-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link " id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
                     <i class="mdi mdi-account-card-details"></i>
-                    <span class="menu-title"> {{trans('message.account')}} </span>
+                    <span class="menu-title"> Account </span>
                 </a>
                 <a class="nav-link " id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                     <i class="mdi mdi-key-variant"></i>
-                    <span class="menu-title"> {{trans('message.password')}} </span>
+                    <span class="menu-title"> Password </span>
                 </a>
                 @if(Auth::user()->hasRole('teacher'))
                 <a class="nav-link {{old('tab') == 'expertise' ? ' active' : null}}" id="expertise-tab" data-toggle="pill" href="#expertise" role="tab" aria-controls="expertise" aria-selected="false">
                     <i class="mdi mdi-account-star"></i>
-                    <span class="menu-title">{{ App::getLocale() == 'th' ? 'ความเชี่ยวชาญ' : 'Expertise' }} </span>
+                    <span class="menu-title"> Expertise </span>
                 </a>
                 <a class="nav-link" id="education-tab" data-toggle="pill" href="#education" role="tab" aria-controls="education" aria-selected="false">
                     <i class="mdi mdi-school"></i>
-                    <span class="menu-title"> {{trans('message.education')}} </span>
+                    <span class="menu-title"> Education </span>
                 </a>
                 @endif
             </div>
@@ -56,50 +56,50 @@
         <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
             <!-- <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab"> -->
             <div class="tab-pane " id="account" role="tabpanel" aria-labelledby="account-tab">
-                <h3 class="mb-4">{{trans('message.profileSetting')}}</h3>
+                <h3 class="mb-4">Profile Settings</h3>
                 <form class="form-horizontal" method="POST" action="{{ route('adminUpdateInfo') }}" id="AdminInfoForm">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group col-sm-4">
-                                <label>{{trans('message.nameTitle')}}</label>
+                                <label>Name title</label>
                                 <select class="custom-select my-select " name="title_name_en">
-                                    <option value="Mr." {{ Auth::user()->title_name_en == 'Mr.' ? 'selected' : '' }}>{{ App::getLocale() == 'th' ? 'นาย' : 'Mr.' }}</option>
-                                    <option value="Miss" {{ Auth::user()->title_name_en == 'Miss' ? 'selected' : '' }}>{{ App::getLocale() == 'th' ? 'นางสาว' : 'Miss' }}</option>
-                                    <option value="Mrs." {{ Auth::user()->title_name_en == 'Mrs.' ? 'selected' : '' }}>{{ App::getLocale() == 'th' ? 'นาง' : 'Mrs' }}</option>
+                                    <option value="Mr." {{ Auth::user()->title_name_en == 'Mr.' ? 'selected' : '' }}>Mr.</option>
+                                    <option value="Miss" {{ Auth::user()->title_name_en == 'Miss' ? 'selected' : '' }}>Miss</option>
+                                    <option value="Mrs." {{ Auth::user()->title_name_en == 'Mrs.' ? 'selected' : '' }}>Mrs.</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'ชื่อ (ภาษาอังกฤษ)' : 'First name (English)' }}</label>
+                                <label>First name (English)</label>
                                 <input type="text" class="form-control" id="inputfNameEN" placeholder="Name" value="{{ Auth::user()->fname_en }}" name="fname_en">
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'นามสกุล (ภาษาอังกฤษ)' : 'Last name (English)' }}</label>
+                                <label>Last name (English)</label>
                                 <input type="text" class="form-control" id="inputlNameEN" placeholder="Name" value="{{ Auth::user()->lname_en }}" name="lname_en">
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'ชื่อ (ภาษาไทย)' : 'First name (Thai)' }}</label>
+                                <label>ชื่อ (ภาษาไทย)</label>
                                 <input type="text" class="form-control" id="inputfNameTH" placeholder="Name" value="{{ Auth::user()->fname_th }}" name="fname_th">
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'นามสกุล (ภาษาไทย)' : 'Last name (Thai)' }}</label>
+                                <label>นามสกุล (ภาษาไทย)</label>
                                 <input type="text" class="form-control" id="inputlNameTH" placeholder="Name" value="{{ Auth::user()->lname_th }}" name="lname_th">
                                 <span class="text-danger error-text name_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{trans('message.email')}}</label>
+                                <label>Email</label>
                                 <input type="text" class="form-control" id="inputEmail" placeholder="Email" value="{{ Auth::user()->email }}" name="email">
                                 <span class="text-danger error-text email_error"></span>
                             </div>
@@ -140,7 +140,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <div class="checkbox">
-                                    <label><input name="pos" type="checkbox" value="check2" />{{ App::getLocale() == 'th' ? 'สำหรับอาจารย์ที่ไม่มีคุณวุฒิปริญญาเอก โปรดระบุ' : 'For teachers without a PhD, please specify.' }}</label>
+                                    <label><input name="pos" type="checkbox" value="check2" />สำหรับอ.ผู้ที่ไม่มีคุณวุฒิปริญญาเอก โปรดระบุ</label>
                                 </div>
 
                             </div>
@@ -148,7 +148,7 @@
                         @endif
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">{{trans('message.update')}}</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -156,11 +156,11 @@
 
             <div class="tab-pane fade " id="password" role="tabpanel" aria-labelledby="password-tab">
                 <form class="form-horizontal" action="{{ route('adminChangePassword') }}" method="POST" id="changePasswordAdminForm">
-                    <h3 class="mb-4">{{trans('message.passwordSetting')}}</h3>
+                    <h3 class="mb-4">Password Settings</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'รหัสผ่านเก่า' : 'Old password' }}</label>
+                                <label>Old password</label>
                                 <input type="password" class="form-control" id="inputpassword" placeholder="Enter current password" name="oldpassword">
                                 <span class="text-danger error-text oldpassword_error"></span>
                             </div>
@@ -169,21 +169,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'รหัสผ่านใหม่' : 'New' password' }}</label>
+                                <label>New password</label>
                                 <input type="password" class="form-control" id="newpassword" placeholder="Enter new password" name="newpassword">
                                 <span class="text-danger error-text newpassword_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ App::getLocale() == 'th' ? 'ยืนยันรหัสผ่านใหม่อีกครั้ง' : 'Confirm new password' }}</label>
+                                <label>Confirm new password</label>
                                 <input type="password" class="form-control" id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
                                 <span class="text-danger error-text cnewpassword_error"></span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary">{{trans('message.update')}}</button>
+                        <button class="btn btn-primary">Update!!</button>
                         <!-- <button class="btn btn-light">Cancel</button> -->
                     </div>
 
