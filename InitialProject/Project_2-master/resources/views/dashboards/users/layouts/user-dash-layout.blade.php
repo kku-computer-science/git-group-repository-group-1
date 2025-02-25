@@ -5,6 +5,48 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 
+<!-------------------- ที่ออกแบบใหม่ของแปลภาษา  ------------------------------->
+<style>
+        .language-switcher {
+            display: inline-flex;
+            border: 1px solid #c2c2c2;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .lang-item {
+            padding: 6px 12px;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #a7caef;
+        }
+
+        .lang-item.active {
+            background: #ffffff;
+            color: #436991; 
+        }
+
+        .lang-item:hover:not(.active) {
+            background: #f8f9fa;
+            color: #70b1f7; 
+        }
+
+        .lang-item-th {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .lang-item-en {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
+
+
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -69,6 +111,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
+<!------------------------------------------- แปลภาษา ---------------------------------------------------------------------->
+                <li class="nav-item">
+                    <div class="language-switcher">
+                        <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'th') }}'">
+                            TH
+                        </button>
+                        <button class="lang-item lang-item-63 lang-item-en current-lang {{ App::getLocale() == 'en' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'en') }}'">
+                            EN
+                        </button>
+                    </div>
+                </li>
+
+
                     <li class="nav-item d-none d-lg-block">
                         <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
                             <span class="input-group-addon input-group-prepend border-right">
@@ -83,6 +140,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
                         </form>
                     </li>
+
+
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">

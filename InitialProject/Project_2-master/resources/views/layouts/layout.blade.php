@@ -91,7 +91,7 @@
                         <a class="nav-link" href="/reports">{{ trans('message.Report') }}</a>
                     </li>
 
-        <!-- แก้ 1 -->
+        <!------------------------------------ แปลภาษา---------------------------------------------------------------------- -->
                     <li class="nav-item">
                     <div class="language-switcher">
                         <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 

@@ -376,7 +376,7 @@ Colors:
             border-bottom-color: #959595;
         }
 
- /*เพิ่ม แก้1 */
+ /***************************************** ที่ออกแบบใหม่ของLogin  ************************************/
         .language-switcher {
             display: inline-flex;
             border: 1px solid #c2c2c2;
@@ -385,7 +385,7 @@ Colors:
         }
 
         .lang-item {
-            padding: 10px 12px;
+            padding: 9px 12px;
             border: none;
             background: #fff;
             cursor: pointer;
@@ -414,6 +414,8 @@ Colors:
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
         }
+
+
         /* .navbar .navbar-brand {
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
