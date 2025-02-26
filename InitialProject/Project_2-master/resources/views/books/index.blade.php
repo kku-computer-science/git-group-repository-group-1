@@ -14,17 +14,17 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Book</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('books.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title">{{ trans('message.book') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('books.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
             <!-- <div class="table-responsive"> -->
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
                             <th>{{ trans('message.no') }}</th>
                             <th>{{ trans('message.name') }}</th>
-                            <th>{{ trans('message.year') }}(พ.ศ.)</th>
-                            <th>แหล่งเผยแพร่</th>
-                            <th>หน้า</th>
+                            <th>{{ trans('message.year') }} (พ.ศ.)</th>
+                            <th>{{ trans('message.publicationSource') }}</th>
+                            <th>{{ trans('message.page') }}</th>
                             <th width="280px">{{ trans('message.action') }}</th>
                         </tr>
                         <thead>

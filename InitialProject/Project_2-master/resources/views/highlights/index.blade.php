@@ -5,24 +5,24 @@
 <div class="container">
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Highlight List</h4>
+            <h4 class="card-title">{{ trans('message.highlightList') }}</h4>
 
             <!-- ADD New Highlight Button -->
             <a class="btn btn-primary mb-3" href="{{ route('highlights.create') }}">
-                <i class="mdi mdi-plus"></i> Add Highlight
+                <i class="mdi mdi-plus"></i>{{ trans('message.add') }}
             </a>
 
             <div class="table-responsive">
                 <table id="highlightsTable" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Image</th>
-                            <th>Priority</th>
-                            <th>Status</th>
-                            <th>Actions</th> <!-- New Column for Actions -->
+                            <th>{{ trans('message.no') }}</th>
+                            <th>{{ trans('message.title') }}</th>
+                            <th>{{ trans('message.describe') }}</th>
+                            <th>{{ trans('message.image') }}</th>
+                            <th>{{ trans('message.priority') }}</th>
+                            <th>{{ trans('message.status') }}</th>
+                            <th>{{ trans('message.action') }}</th> <!-- New Column for Actions -->
                         </tr>
                     </thead>
                     <tbody>

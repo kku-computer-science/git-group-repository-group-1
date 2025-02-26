@@ -30,16 +30,16 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title" style="text-align: center;">หลักสูตร</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title" style="text-align: center;">{{ trans('message.course') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
             <table id="example1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Name (ไทย)</th>
+                        <th>{{ trans('message.id') }}</th>
+                        <th>{{ trans('message.name') }} ({{ trans('message.thai') }})</th>
                         <!-- <th>Name (Eng)</th> -->
-                        <th>Degree</th>
-                        <th>Action</th>
+                        <th>{{ trans('message.degree') }}</th>
+                        <th>{{ trans('message.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
