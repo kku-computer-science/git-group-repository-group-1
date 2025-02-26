@@ -1,4 +1,4 @@
-@extends('dashboards.users.layouts.user-dash-layout')
+@extends('dashboards.users.layouts.user-dash-layout') 
 
 @section('content')
 
@@ -16,26 +16,40 @@
                 <table id="highlightsTable" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>{{ trans('message.no') }}</th>
-                            <th>{{ trans('message.title') }}</th>
-                            <th>{{ trans('message.describe') }}</th>
-                            <th>{{ trans('message.image') }}</th>
-                            <th>{{ trans('message.priority') }}</th>
-                            <th>{{ trans('message.status') }}</th>
-                            <th>{{ trans('message.action') }}</th> <!-- New Column for Actions -->
+                            <th>No.</th>
+                            <th>Title (EN)</th>
+                            <th>Title (TH)</th>
+                            <th>Title (CN)</th>
+                            <th>Description (EN)</th>
+                            <th>Description (TH)</th>
+                            <th>Description (CN)</th>
+                            <th>Image (EN)</th>
+                            <th>Image (TH)</th>
+                            <th>Image (CN)</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($highlights as $i => $highlight)
                         <tr>
                             <td>{{ $i + 1 }}</td>
-                            <td>{{ $highlight->title }}</td>
-                            <td>{{ Str::limit($highlight->description, 80) }}</td>
+                            <td>{{ $highlight->title_en }}</td>
+                            <td>{{ $highlight->title_th }}</td>
+                            <td>{{ $highlight->title_cn }}</td>
+                            <td>{{ Str::limit($highlight->description_en, 100) }}</td>
+                            <td>{{ Str::limit($highlight->description_th, 100) }}</td>
+                            <td>{{ Str::limit($highlight->description_cn, 100) }}</td>
                             <td>
-                                <img src="{{ asset($highlight->image_url) }}" alt="Highlight Image" width="100">
+                                <img src="{{ asset($highlight->image_url_en) }}" alt="Highlight EN" width="100">
+                            </td>
+                            <td>
+                                <img src="{{ asset($highlight->image_url_th) }}" alt="Highlight TH" width="100">
+                            </td>
+                            <td>
+                                <img src="{{ asset($highlight->image_url_cn) }}" alt="Highlight CN" width="100">
                             </td>
                             <td>{{ $highlight->priority }}</td>
-                            <td>{{ ucfirst($highlight->status) }}</td>
                             <td>
                                 <!-- Edit Button -->
                                 <a class="btn btn-outline-success btn-sm" href="{{ route('highlights.edit', $highlight->id) }}" title="Edit">
@@ -70,7 +84,7 @@
         $('#highlightsTable').DataTable(); // Initialize DataTable
     });
 
-    // Sweet Alert for Delete Confirmation
+    //delete confirm
     $('.show_confirm').click(function(event) {
         var form = $(this).closest("form");
         event.preventDefault();

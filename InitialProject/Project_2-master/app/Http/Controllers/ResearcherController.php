@@ -14,7 +14,9 @@ class ResearcherController extends Controller
     {
         //$reshr = User::role('teacher')->orderBy('department_id')->with('Expertise')->get();
         //$reshr = Department::with(['users' => fn($query) => $query->where('fname', 'like', 'wat%')])->get();
-        $reshr = Program::with(['users' => fn ($query) => $query->role('teacher')->with('expertise')])->where('degree_id', '=', 1)->get();
+        $reshr = Program::with(['users' => function ($query) {
+            $query->role('teacher')->with('expertise');
+        }])->where('degree_id', '=', 1)->get();
         //$reshr = Department::with('users')->join('expertises', 'id', '=', 'expertises.user_id')->get();
 
 
@@ -50,7 +52,7 @@ class ResearcherController extends Controller
             $q->where('id', '=', $id);
         })->orderBy('fname_en')->get();
         
-        $users = collect([...$user1, ...$user4, ...$user2, ...$user5, ...$user3, ...$user6, ...$user7, ...$user8]);
+        $users = collect(array_merge($user1->toArray(), $user4->toArray(), $user2->toArray(), $user5->toArray(), $user3->toArray(), $user6->toArray(), $user7->toArray(), $user8->toArray()));
         //return $users;
         // $request = Program::with(['users' => fn($query) => 
         // //$query->role('teacher')->orderByRaw("FIELD(position_en , 'Prof. Dr.' as 1, 'Assoc. Prof. Dr.' as 2, 'Asst. Prof. Dr.' as 3,'Assoc. Prof.' as 4, 'Asst. Prof.' as 5, 'Dr.' as 6,'Lecturer' as 7) ASC")
@@ -109,7 +111,7 @@ class ResearcherController extends Controller
             $q->where('expert_name', 'LIKE', "%{$text}%");
         })->orderBy('fname_en')->get();
 
-        $users = collect([...$user1, ...$user2, ...$user3, ...$user4, ...$user5, ...$user6, ...$user7, ...$user8]);
+        $users = collect(array_merge($user1->toArray(), $user2->toArray(), $user3->toArray(), $user4->toArray(), $user5->toArray(), $user6->toArray(), $user7->toArray(), $user8->toArray()));
 
         $request = Program::where('id','=',$id)->get();
 

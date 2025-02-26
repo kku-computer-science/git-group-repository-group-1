@@ -375,6 +375,51 @@ Colors:
             border-bottom-width: 3px;
             border-bottom-color: #959595;
         }
+
+         /***************************************** ที่ออกแบบใหม่แปลภาษาของLogin  ************************************/
+         .language-switcher {
+            display: inline-flex;
+            border: 1px solid #c2c2c2;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .lang-item {
+            padding: 9px 12px;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #a7caef;
+        }
+
+        .lang-item.active {
+            background: #ffffff;
+            color: #436991; 
+        }
+
+        .lang-item:hover:not(.active) {
+            background: #f8f9fa;
+            color: #70b1f7; 
+        }
+
+        .lang-item-th {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .lang-item-en {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .lang-item-cn {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+
         /* .navbar .navbar-brand {
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
@@ -405,10 +450,6 @@ Colors:
             visibility: visible;
             -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
-        }
-        
-        .navbar .navbar-nav .nav-item {
-            border-right: 1px solid rgba(18, 66, 106, 0.45);
         }
         
         .navbar .navbar-nav .nav-item .nav-link {

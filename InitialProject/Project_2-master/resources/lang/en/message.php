@@ -50,6 +50,8 @@ return [
 'describe_1' => 'For Username, use KKU-Mail to log in.',
 'describe_2' => 'For students who are logging in for the first time, please log in with your student ID number.',
 'account' => 'Account',
+
+
 'changePicture' => 'Chnage picture',
 'expertise' => 'Expertise',
 'education' => 'Education',
@@ -106,6 +108,8 @@ return [
 'researchGroupMember' => 'Research Group Member',
 'submit' => 'Submit',
 'back' => 'Back',
+
+
 'title' => 'Title',
 'type' => 'Type',
 'yearOfPublication' => 'Year of publication',
@@ -158,6 +162,8 @@ return [
 'agency' => 'Agency',
 'addDetailBy' => 'Add detail by',
 'editFund' => 'Edit Fund',
+
+
 'editFundDetail' => 'Fill in the information to edit research fund details.',
 'notSpecified' => 'Not Specified',
 'high' => 'High',
@@ -207,6 +213,8 @@ return [
 'endProject' => 'End project',
 'researchSource' => 'Research funding sources',
 'amount' => 'Amount',
+
+
 'projectStatus' => 'Project status',
 'projectMember' => 'Project Member',
 'researchGroupNameTh' => 'Name of research group (Thai)',
@@ -258,6 +266,8 @@ return [
 'otherProjectType' => 'Type',
 'otherProjectSpe' => 'Please specify type',
 'patent' => 'Patent',
+
+
 'patentInvention' => 'Patent (Invention)',
 'patentProductDesign' => 'Patent (product design)',
 'copyrightDate' => 'Copyright date',

@@ -347,6 +347,50 @@
 			margin-left: 0px;
 			font-size: 12px;
 		}
+
+		/******************* ของแปลภาษา ********************************/
+		.language-switcher {
+		display: inline-flex;
+            border: 1px solid #c2c2c2;
+            border-radius: 20px;
+            overflow: hidden;
+			float : right;
+		}
+        .lang-item {
+            padding: 6px 12px;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #a7caef;
+        }
+
+        .lang-item.active {
+            background: #ffffff;
+            color: #436991; 
+        }
+
+        .lang-item:hover:not(.active) {
+            background: #f8f9fa;
+            color: #70b1f7; 
+        }
+
+        .lang-item-th {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .lang-item-en {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+		.lang-item-cn {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
 	</style>
 </head>
 
@@ -403,27 +447,27 @@
 			</div>
 		</div>
 	</div> -->
-	<li class="nav-item dropdown language-dropdown">
-		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
-			{{ Config::get('languages')[App::getLocale()]['display'] }}
-		</a>
-		<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			@foreach (Config::get('languages') as $lang => $language)
-			@if ($lang != App::getLocale())
-			<a class="dropdown-item" href="{{ route('langswitch', $lang) }}">
-				<span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-				{{$language['display']}}
-			</a>
-			@endif
-			@endforeach
-		</div>
-	</li>
-
 	<div class="form">
 		<div class="form-toggle"></div>
 		<div class="form-panel one">
 			<div class="form-header">
+				<!------------------------------------------- เพิ่มปุ่มแปลภาษา ------------------------------>	
+				<li class="nav-item">
+                    <div class="language-switcher">
+                        <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'th') }}'">
+                            TH
+                        </button>
+                        <button class="lang-item lang-item-63 lang-item-en current-lang {{ App::getLocale() == 'en' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'en') }}'">
+                            EN
+                        </button>
+						<button class="lang-item lang-item-64 lang-item-en current-lang {{ App::getLocale() == 'cn' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'cn') }}'">
+                            CN
+                        </button>
+                    </div>
+                </li>
 				<h1>{{ trans('message.accountLogin') }}</h1>
 			</div>
 			<div class="form-content">

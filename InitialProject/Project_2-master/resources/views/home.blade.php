@@ -33,44 +33,49 @@
     }
 </style>
 @section('content')
+<!--highlight-->
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            @foreach ($highlights as $index => $highlight)
-                <button type="button" data-bs-target="#carouselExampleIndicators" 
-                        data-bs-slide-to="{{ $index }}" 
-                        class="{{ $index == 0 ? 'active' : '' }}" 
-                        aria-label="Slide {{ $index + 1 }}">
+            <div class="carousel-indicators">
+                @foreach ($highlights as $index => $highlight)
+                <button type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="{{ $index }}"
+                    class="{{ $index == 0 ? 'active' : '' }}"
+                    aria-label="Slide {{ $index + 1 }}">
                 </button>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
 
-        <!-- Carousel Items (Dynamic) -->
-        <div class="carousel-inner">
-            @forelse ($highlights as $index => $highlight)
+            <!--Highlight image-->
+            <div class="carousel-inner">
+                @forelse ($highlights as $index => $highlight)
+                @php
+                $lang = App::getLocale();
+                $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
+                @endphp
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                    <img src="{{ asset($highlight->image_url) }}" class="d-block w-100" alt="{{ $highlight->title }}">
+                    <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="{{ $highlight->title }}">
                 </div>
-            @empty
+                @empty
                 <!-- Default image if no highlights exist -->
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/default_banner.png') }}" class="d-block w-100" alt="Default Image">
+                    <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="Default Image">
                 </div>
-            @endforelse
-        </div>
-
-        <!-- Previous / Next Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ trans('message.previous') }}</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{  trans('message.next') }}</span>
-        </button>
+                @endforelse
+            </div>
+            <!-- Previous / Next Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
+
 
 
     <!-- Modal -->
@@ -177,7 +182,7 @@
                                     <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
-                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
+                                    <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
                                 </p>
                             </div>
                         </div>
@@ -316,7 +321,7 @@
     let sumsco = paper_scopus;
     let sumwos = paper_wos;
     (function($) {
-        
+
         let sum = paper_wos + paper_tci + paper_scopus;
         //console.log(sum);
         //$("#scopus").append('data-to="100"');
@@ -442,7 +447,7 @@
         $.get('/bib/' + tour_id, function(data) {
             //success data
             console.log(data);
-            $( ".bibtex-biblio" ).remove();
+            $(".bibtex-biblio").remove();
             document.getElementById("name").innerHTML += `${data}`
             // $('#tour_id').val(data.id);
             // $('#name').val(data);

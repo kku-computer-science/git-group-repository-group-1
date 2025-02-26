@@ -182,9 +182,8 @@ class HomeController extends Controller
         //return response()->json($bb);
         //Highlights
         // Fetch active highlights sorted by priority
-        $highlights = Highlight::where('status', 'active')
-        ->orderBy('priority', 'asc')
-        ->get();
+        $highlights = Highlight::orderBy('priority', 'asc')->get();
+
 
         return view('home', compact('papers', 'highlights'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
