@@ -33,10 +33,15 @@
     }
 </style>
 @section('content')
+<<<<<<< HEAD
+=======
+<!--highlight-->
+>>>>>>> main
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
+<<<<<<< HEAD
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <!--button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button --> 
@@ -55,6 +60,35 @@
                 <img src="..." class="d-block w-100" alt="...">
             </div> -->
             </div>
+=======
+                @foreach ($highlights as $index => $highlight)
+                <button type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="{{ $index }}"
+                    class="{{ $index == 0 ? 'active' : '' }}"
+                    aria-label="Slide {{ $index + 1 }}">
+                </button>
+                @endforeach
+            </div>
+
+            <!--Highlight image-->
+            <div class="carousel-inner">
+                @forelse ($highlights as $index => $highlight)
+                @php
+                $lang = App::getLocale();
+                $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
+                @endphp
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="{{ $highlight->title }}">
+                </div>
+                @empty
+                <!-- Default image if no highlights exist -->
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="Default Image">
+                </div>
+                @endforelse
+            </div>
+            <!-- Previous / Next Buttons -->
+>>>>>>> main
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -67,6 +101,10 @@
     </div>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     <!-- Modal -->
 
 
@@ -115,14 +153,22 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+<<<<<<< HEAD
                     <h5 class="modal-title">Reference (APA)</h5>
+=======
+                    <h5 class="modal-title">{{ trans('message.reference') }} (APA)</h5>
+>>>>>>> main
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="name">
                     <!-- <p>Modal body text goes here.</p> -->
                 </div>
                 <div class="modal-footer">
+<<<<<<< HEAD
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+=======
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('message.close') }}</button>
+>>>>>>> main
                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
@@ -140,9 +186,23 @@
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
                         @if (!$loop->last)
+<<<<<<< HEAD
                         {{$n}}
                         @else
                         Before {{$n}}
+=======
+                        @if (app()->getLocale() == 'en')
+                        {{$n}}
+                        @else
+                        {{$n+543}}
+                        @endif
+                        @else
+                        @if (app()->getLocale() == 'en')
+                        {{ trans('message.before') }} {{$n}}
+                        @else
+                        {{ trans('message.before') }} {{$n+543}}
+                        @endif
+>>>>>>> main
                         @endif
 
                     </button>
@@ -163,7 +223,11 @@
                                     <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
+<<<<<<< HEAD
                                     <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[อ้างอิง]</button>
+=======
+                                    <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
+>>>>>>> main
                                 </p>
                             </div>
                         </div>
@@ -262,7 +326,11 @@
                 },
                 scaleLabel: {
                     display: true,
+<<<<<<< HEAD
                     labelString: 'Number',
+=======
+                    labelString: '{{ trans("message.number") }}',
+>>>>>>> main
 
                 },
                 ticks: {
@@ -273,14 +341,22 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
+<<<<<<< HEAD
                     labelString: 'Year'
+=======
+                    labelString: '{{ trans("message.year") }}'
+>>>>>>> main
                 }
             }]
         },
 
         title: {
             display: true,
+<<<<<<< HEAD
             text: 'Report the total number of articles ( 5 years : cumulative)',
+=======
+            text: '{{ trans("message.titleReportHome") }}',
+>>>>>>> main
             fontSize: 20
         }
 
@@ -302,14 +378,22 @@
     let sumsco = paper_scopus;
     let sumwos = paper_wos;
     (function($) {
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> main
         let sum = paper_wos + paper_tci + paper_scopus;
         //console.log(sum);
         //$("#scopus").append('data-to="100"');
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
+<<<<<<< HEAD
                 <p class="count-text ">SUMMARY</p>`
+=======
+                <p class="count-text ">{{ trans('message.summary') }}</p>`
+>>>>>>> main
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
@@ -428,7 +512,11 @@
         $.get('/bib/' + tour_id, function(data) {
             //success data
             console.log(data);
+<<<<<<< HEAD
             $( ".bibtex-biblio" ).remove();
+=======
+            $(".bibtex-biblio").remove();
+>>>>>>> main
             document.getElementById("name").innerHTML += `${data}`
             // $('#tour_id').val(data.id);
             // $('#name').val(data);

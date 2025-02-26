@@ -20,12 +20,21 @@
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
+<<<<<<< HEAD
                             <th>No.</th>
                             <th>ชื่อ</th>
                             <th>ปี(พ.ศ.)</th>
                             <th>แหล่งเผยแพร่</th>
                             <th>หน้า</th>
                             <th width="280px">Action</th>
+=======
+                            <th>{{ trans('message.no') }}</th>
+                            <th>{{ trans('message.name') }}</th>
+                            <th>{{ trans('message.year') }}(พ.ศ.)</th>
+                            <th>แหล่งเผยแพร่</th>
+                            <th>หน้า</th>
+                            <th width="280px">{{ trans('message.action') }}</th>
+>>>>>>> main
                         </tr>
                         <thead>
                         <tbody>

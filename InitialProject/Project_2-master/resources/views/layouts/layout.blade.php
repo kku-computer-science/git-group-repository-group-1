@@ -76,7 +76,15 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($dn as $department)
                             <li><a class="dropdown-item" href="{{ route('researchers',['id'=>$department->id])}}">
+<<<<<<< HEAD
                                     {{$department->program_name_en}}</a>
+=======
+                                    @if (app()->getLocale() == 'en')
+                                    {{$department->program_name_en}}</a>
+                                    @else
+                                    {{$department->program_name_th}}</a>
+                                    @endif
+>>>>>>> main
                             </li>
                             @endforeach
                         </ul>
@@ -91,7 +99,12 @@
                         <a class="nav-link" href="/reports">{{ trans('message.Report') }}</a>
                     </li>
 
+<<<<<<< HEAD
         <!------------------------------------ แปลภาษา---------------------------------------------------------------------- -->
+=======
+
+
+>>>>>>> main
                     <li class="nav-item">
                     <div class="language-switcher">
                         <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 
@@ -109,6 +122,10 @@
                     </div>
                 </li>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
                 </ul>
                 @if (Route::has('login'))
                 @auth
@@ -117,7 +134,11 @@
                 </span>
                 @else
                 <span class="nav-item">
+<<<<<<< HEAD
                     <a class="btn-solid-sm" href="/login" target="_blank">Login</a>
+=======
+                    <a class="btn-solid-sm" href="/login" target="_blank">{{ trans('message.login') }}</a>
+>>>>>>> main
                 </span>
                 @endauth
                 @endif

@@ -19,6 +19,10 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+<<<<<<< HEAD
+=======
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+>>>>>>> main
 	<!--===============================================================================================-->
 	<style>
 		html {
@@ -278,6 +282,37 @@
 			text-transform: uppercase;
 		}
 
+<<<<<<< HEAD
+=======
+		.language-dropdown {
+			position: fixed;
+			top: 10px;
+			right: 10px;
+			background-color: white;
+			border-radius: 5px;
+			z-index: 9999;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			padding: 10px;
+			color: #212529;
+		}
+
+		.language-dropdown .dropdown-menu {
+			min-width: auto;
+			width: fit-content;
+			padding: 5px 10px;
+		}
+
+		.language-dropdown .nav-link,
+		.language-dropdown .dropdown-item {
+			color: #000 !important;
+		}
+
+		.language-dropdown .dropdown-item:hover {
+			background-color: #f8f9fa;
+			color: #000 !important;
+		}
+
+>>>>>>> main
 		.two .form-header h1 {
 			position: relative;
 			z-index: 40;
@@ -319,7 +354,11 @@
 			font-size: 12px;
 		}
 
+<<<<<<< HEAD
 /******************* ของแปลภาษา ********************************/
+=======
+		/******************* ของแปลภาษา ********************************/
+>>>>>>> main
 		.language-switcher {
 		display: inline-flex;
             border: 1px solid #c2c2c2;
@@ -357,7 +396,11 @@
             border-bottom-left-radius: 20px;
         }
 
+<<<<<<< HEAD
 		.lang-item-en {
+=======
+		.lang-item-cn {
+>>>>>>> main
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
         }
@@ -365,6 +408,10 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 	<!-- <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-100">
@@ -416,13 +463,21 @@
 			</div>
 		</div>
 	</div> -->
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 	<div class="form">
 		<div class="form-toggle"></div>
 		<div class="form-panel one">
 			<div class="form-header">
+<<<<<<< HEAD
 									<!------------------------------------------- เพิ่มปุ่มแปลภาษา ------------------------------>	
 									<li class="nav-item">
+=======
+				<!------------------------------------------- เพิ่มปุ่มแปลภาษา ------------------------------>	
+				<li class="nav-item">
+>>>>>>> main
                     <div class="language-switcher">
                         <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 
                                 onclick="window.location.href='{{ route('langswitch', 'th') }}'">
@@ -438,7 +493,11 @@
                         </button>
                     </div>
                 </li>
+<<<<<<< HEAD
 				<h1>Account Login</h1>
+=======
+				<h1>{{ trans('message.accountLogin') }}</h1>
+>>>>>>> main
 			</div>
 			<div class="form-content">
 				<form method="POST" class="validate-form" autocomplete="off" action="{{ route('login') }}">
@@ -451,7 +510,11 @@
 					@endif
 					<!-- <div class="form-group validate-input" data-validate="Valid email is required: ex@abc.xyz"> -->
 					<div class="form-group validate-input">
+<<<<<<< HEAD
 						<label for="email">Username</label>
+=======
+						<label for="email">{{ trans('message.username') }}</label>
+>>>>>>> main
 						<input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autofocus>
 						@error('username')
 						<span class="invalid-feedback" role="alert">
@@ -460,11 +523,16 @@
 						@enderror
 					</div>
 					<div class="form-group validate-input" data-validate="Password is required">
+<<<<<<< HEAD
 						<label for="password">Password</label>
+=======
+						<label for="password">{{ trans('message.password') }}</label>
+>>>>>>> main
 						<input id="password" class="input" type="password" name="password" required="required" />
 					</div>
 					<div class="form-group">
 						<label class="form-remember">
+<<<<<<< HEAD
 							<input id="ckb1" name="remember" type="checkbox" />Remember Me
 						</label>
 					</div>
@@ -477,6 +545,20 @@
 					<ul>
 						<li>สำหรับ Username ใช้ KKU-Mail ในการเข้าสู่ระบบ</li>
 						<li>สำหรับนักศึกษาที่เข้าระบบเป็นครั้งแรกให้เข้าสู่ระด้วยรหัสนักศึกษา</li>
+=======
+							<input id="ckb1" name="remember" type="checkbox" />{{ trans('message.rememberMe') }}
+						</label>
+					</div>
+					<div class="form-group">
+						<button type="submit">{{ trans('message.login') }}</button>
+					</div>
+					<div class="form-remember pb-3">
+						<p style="color: red; text-align: right;"> *** {{ trans('message.forgetPassword') }}</p>
+					</div>
+					<ul>
+						<li>{{ trans('message.describe_1') }}</li>
+						<li>{{ trans('message.describe_2') }}</li>
+>>>>>>> main
 					</ul>
 				</form>
 			</div>

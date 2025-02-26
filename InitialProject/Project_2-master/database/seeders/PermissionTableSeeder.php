@@ -51,6 +51,13 @@ class PermissionTableSeeder extends Seeder
             'departments-create',
             'departments-edit',
             'departments-delete',
+<<<<<<< HEAD
+=======
+            'highlights-list',
+            'highlights-create',
+            'highlights-edit',
+            'highlights-delete',
+>>>>>>> main
         ];
 
         foreach ($data as $permission) {
