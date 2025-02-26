@@ -26,7 +26,7 @@
                     @enderror
                 </div>              
                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mt-3" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-3" id="submit">{{ trans('message.submit') }}</button>
                 </div>
             </div>     
         </form>

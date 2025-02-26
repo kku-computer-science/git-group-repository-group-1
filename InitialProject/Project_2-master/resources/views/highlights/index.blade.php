@@ -5,11 +5,11 @@
 <div class="container">
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Highlight List</h4>
+            <h4 class="card-title">{{ trans('message.highlightList') }}</h4>
 
             <!-- ADD New Highlight Button -->
             <a class="btn btn-primary mb-3" href="{{ route('highlights.create') }}">
-                <i class="mdi mdi-plus"></i> Add Highlight
+                <i class="mdi mdi-plus"></i>{{ trans('message.add') }}
             </a>
 
             <div class="table-responsive">

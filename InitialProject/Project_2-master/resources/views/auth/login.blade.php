@@ -354,6 +354,7 @@
             border: 1px solid #c2c2c2;
             border-radius: 20px;
             overflow: hidden;
+			float : right;
 		}
         .lang-item {
             padding: 6px 12px;

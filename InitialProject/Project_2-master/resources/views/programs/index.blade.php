@@ -30,16 +30,16 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title" style="text-align: center;">หลักสูตร</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title" style="text-align: center;">{{ trans('message.course') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="javascript:void(0)" id="new-program" data-toggle="modal"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
             <table id="example1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Name (ไทย)</th>
+                        <th>{{ trans('message.id') }}</th>
+                        <th>{{ trans('message.name') }} ({{ trans('message.thai') }})</th>
                         <!-- <th>Name (Eng)</th> -->
-                        <th>Degree</th>
-                        <th>Action</th>
+                        <th>{{ trans('message.degree') }}</th>
+                        <th>{{ trans('message.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>ระดับการศึกษา:</strong>
+                                <strong>{{ trans('message.degree') }}:</strong>
                                 <div class="col-sm-8">
                                     <select id="degree" class="custom-select my-select" name="degree">
                                         @foreach($degree as $d)
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <strong>สาขาวิชา:</strong>
+                                <strong>{{ trans('message.department') }}:</strong>
                                 <div class="col-sm-8">
                                     <select id="department" class="custom-select my-select" name="department">
                                         @foreach($department as $d)
@@ -110,11 +110,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <strong>Name TH:</strong>
+                                <strong>{{ trans('message.nameTh') }}:</strong>
                                 <input type="text" name="program_name_th" id="program_name_th" class="form-control" placeholder="program name th" onchange="validate()">
                             </div>
                             <div class="form-group">
-                                <strong>Name EH:</strong>
+                                <strong>{{ trans('message.nameEn') }}:</strong>
                                 <input type="text" name="program_name_en" id="program_name_en" class="form-control" placeholder="program_name_en" onchange="validate()">
                             </div>
                             <!-- <div class="form-group">
@@ -125,8 +125,8 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary" disabled>Submit</button>
-                            <a href="{{ route('programs.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary" disabled>{{ trans('message.submit') }}</button>
+                            <a href="{{ route('programs.index') }}" class="btn btn-danger">{{ trans('message.cancel') }}</a>
                             <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
                         </div>
                     </div>

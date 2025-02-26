@@ -140,6 +140,18 @@
         },
         {
             "name": "brick/math",
+<<<<<<< HEAD
+            "version": "0.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/math.git",
+                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brick/math/zipball/901eddb1e45a8e0f689302e40af871c181ecbe40",
+                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40",
+=======
             "version": "0.11.0",
             "source": {
                 "type": "git",
@@ -150,6 +162,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/brick/math/zipball/0ad82ce168c82ba30d1c01ec86116ab52f589478",
                 "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478",
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
                 "shasum": ""
             },
             "require": {
@@ -157,8 +170,13 @@
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
+<<<<<<< HEAD
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "6.8.8"
+=======
                 "phpunit/phpunit": "^9.0",
                 "vimeo/psalm": "5.0.0"
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
             },
             "type": "library",
             "autoload": {
@@ -183,7 +201,11 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/brick/math/tree/0.12.2"
+=======
                 "source": "https://github.com/brick/math/tree/0.11.0"
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
             },
             "funding": [
                 {
@@ -191,7 +213,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2025-02-26T10:21:45+00:00"
+=======
             "time": "2023-01-15T23:15:59+00:00"
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -6367,6 +6393,18 @@
         },
         {
             "name": "symfony/translation",
+<<<<<<< HEAD
+            "version": "v6.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "3b9bf9f33997c064885a7bfc126c14b9daa0e00e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/3b9bf9f33997c064885a7bfc126c14b9daa0e00e",
+                "reference": "3b9bf9f33997c064885a7bfc126c14b9daa0e00e",
+=======
             "version": "v6.0.19",
             "source": {
                 "type": "git",
@@ -6377,6 +6415,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/9c24b3fdbbe9fb2ef3a6afd8bbaadfd72dad681f",
                 "reference": "9c24b3fdbbe9fb2ef3a6afd8bbaadfd72dad681f",
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
                 "shasum": ""
             },
             "require": {
@@ -6442,7 +6481,11 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
+                "source": "https://github.com/symfony/translation/tree/v6.4.19"
+=======
                 "source": "https://github.com/symfony/translation/tree/v6.0.19"
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
             },
             "funding": [
                 {
@@ -6458,7 +6501,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2025-02-13T10:18:43+00:00"
+=======
             "time": "2023-01-01T08:36:10+00:00"
+>>>>>>> 750417af83938ef3cb5191afa1bbe2b49725c35a
         },
         {
             "name": "symfony/translation-contracts",

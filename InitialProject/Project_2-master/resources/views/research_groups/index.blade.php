@@ -12,7 +12,7 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">กลุ่มวิจัย</h4>
+            <h4 class="card-title">{{ trans('message.ResearchGroup') }}</h4>
             <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchGroups.create') }}"><i
                     class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
             <!-- <div class="table-responsive"> -->

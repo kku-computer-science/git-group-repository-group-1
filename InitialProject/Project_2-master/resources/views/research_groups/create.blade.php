@@ -19,42 +19,42 @@
             <form action="{{ route('researchGroups.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>ชื่อกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3 "><b>{{ trans('message.researchGroupNameTh') }}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_th" value="{{ old('group_name_th') }}" class="form-control"
                             placeholder="ชื่อกลุ่มวิจัย (ภาษาไทย)">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>Name of research group (English)</b></p>
+                    <p class="col-sm-3 "><b>{{ trans('message.researchGroupNameEn') }}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_en" value="{{ old('group_name_en') }}" class="form-control"
                             placeholder="Name of research group (English)">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>คำอธิบายกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDescribeTh') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_th" value="{{ old('group_desc_th') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>Research group descriptions (English)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDescribeEn') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_en" value="{{ old('group_desc_en') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>รายละเอียดกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDetailTh') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_en" value="{{ old('group_detail_th') }}" class="form-control"
                             style="height:90px"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>Research group details (English)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDetailEn') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_en" value="{{ old('group_detail_en') }}" class="form-control"
                             style="height:90px"></textarea>

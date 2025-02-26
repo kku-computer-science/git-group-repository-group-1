@@ -16,20 +16,20 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">department
+            <div class="card-header">{{ trans('message.department') }}
                 @can('role-create')
                     <span class="float-right">
-                        <a class="btn btn-primary" href="{{ route('departments.index') }}">Back</a>
+                        <a class="btn btn-primary" href="{{ route('departments.index') }}">{{ trans('message.back') }}</a>
                     </span>
                 @endcan
             </div>
             <div class="card-body">
                 <div class="lead">
-                    <strong>Deapartment Name TH:</strong>
+                    <strong>{{ trans('message.departmentName') }} TH :</strong>
                     {{ $department->department_name_th }}
                 </div>
                 <div class="lead">
-                    <strong>Deapartment Name EN:</strong>
+                    <strong>{{ trans('message.departmentName') }} EN :</strong>
                     {{ $department->department_name_en }}
                 </div>
             </div>

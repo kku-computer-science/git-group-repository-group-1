@@ -33,17 +33,17 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title" style="text-align: center;">ความเชี่ยวชาญของอาจารย์</h4>
+            <h4 class="card-title" style="text-align: center;">{{ trans('message.professorExpertise') }}</h4>
             <table id="example1" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>{{ trans('message.id') }}</th>
                         @if(Auth::user()->hasRole('admin'))
-                        <th>Teacher Name</th>
+                        <th>{{ trans('message.teacherName') }}</th>
                         @endif
-                        <th>Name</th>
+                        <th>{{ trans('message.name') }}</th>
 
-                        <th>Action</th>
+                        <th>{{ trans('message.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,7 +51,11 @@
                     <tr id="expert_id_{{ $expert->id }}">
                         <td>{{ $i+1 }}</td>
                         @if(Auth::user()->hasRole('admin'))
+                        @if (app()->getLocale() == 'en')
                         <td>{{ $expert->user->fname_en }} {{ $expert->user->lname_en }}</td>
+                        @else
+                        <td>{{ $expert->user->fname_th }} {{ $expert->user->lname_th }}</td>
+                        @endif
                         @endif
                         <td>{{ $expert->expert_name }}</td>
 
@@ -96,14 +100,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>{{ trans('message.name') }}:</strong>
                                 <input type="text" name="expert_name" id="expert_name" class="form-control" placeholder="Expert_name" onchange="validate()">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>Submit</button>
-                            <a href="{{ route('experts.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>{{ trans('message.submit') }}</button>
+                            <a href="{{ route('experts.index') }}" class="btn btn-danger">{{ trans('message.cancel') }}</a>
                         </div>
                     </div>
                 </form>
