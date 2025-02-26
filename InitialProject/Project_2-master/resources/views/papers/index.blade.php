@@ -12,8 +12,8 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">Published research</h4>
-            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i> ADD </a>
+            <h4 class="card-title">{{ trans('message.publishedResearch') }}</h4>
+            <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('papers.create') }}"><i class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
             @if(Auth::user()->hasRole('teacher'))
             <!-- <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Auth::user()->id) }}"><i class="mdi mdi-refresh btn-icon-prepend"></i> Call Paper</a> -->
             <a class="btn btn-primary btn-icon-text btn-sm mb-3" href="{{ route('callscopus',Crypt::encrypt(Auth::user()->id)) }}"><i class="mdi mdi-refresh btn-icon-prepend icon-sm"></i> Call Paper</a>
@@ -22,13 +22,13 @@
                 <table id="example1" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>ชื่อเรื่อง</th>
-                            <th>ประเภท</th>
-                            <th>ปีที่ตีพิมพ์</th>
+                            <th>{{ trans('message.no') }}</th>
+                            <th>{{ trans('message.title') }}</th>
+                            <th>{{ trans('message.type') }}</th>
+                            <th>{{ trans('message.yearOfPublication') }}</th>
                             <!-- <th>ผู้เขียน</th>   -->
                             <!-- <th>Source Title</th> -->
-                            <th width="280px">Action</th>
+                            <th width="280px">{{ trans('message.action') }}</th>
                         </tr>
                         <thead>
                         <tbody>

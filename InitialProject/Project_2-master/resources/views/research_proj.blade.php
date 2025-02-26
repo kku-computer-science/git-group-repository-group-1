@@ -2,24 +2,24 @@
 @section('content')
 
 <div class="container refund">
-    <p>{{trans('message.researchProject')}}</p>
+    <p>{{ trans('message.academicServiceProject') }} / {{ trans('message.ResearchProj') }}</p>
 
     <div class="table-refund table-responsive">
         <table id="example1" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th style="font-weight: bold;">{{trans('message.no')}}</th>
-                    <th class="col-md-1" style="font-weight: bold;">{{trans('message.year')}}</th>
-                    <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ชื่อโครงการ' : 'Project Name' }} </th>
+                    <th style="font-weight: bold;">{{ trans('message.order') }}</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{ trans('message.year') }}</th>
+                    <th class="col-md-4" style="font-weight: bold;">{{ trans('message.projectName') }}</th>
                     <!-- <th>ระยะเวลาโครงการ</th>
                     <th>ผู้รับผิดชอบโครงการ</th>
                     <th>ประเภททุนวิจัย</th>
                     <th>หน่วยงานที่สนันสนุนทุน</th>
                     <th>งบประมาณที่ได้รับจัดสรร</th> -->
-                    <th class="col-md-4" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'รายละเอียด' : 'Details' }}</th>
-                    <th class="col-md-2" style="font-weight: bold;">{{ App::getLocale() == 'th' ? 'ผู้รับผิดชอบโครงการ' : 'Project Manager' }}</th>
+                    <th class="col-md-4" style="font-weight: bold;">{{ trans('message.detail') }}</th>
+                    <th class="col-md-2" style="font-weight: bold;">{{ trans('message.projectManager') }}</th>
                     <!-- <th class="col-md-5">หน่วยงานที่รับผิดชอบ</th> -->
-                    <th class="col-md-1" style="font-weight: bold;">{{trans('message.status')}}</th>
+                    <th class="col-md-1" style="font-weight: bold;">{{ trans('message.status') }}</th>
                 </tr>
             </thead>
 
@@ -38,14 +38,14 @@
 
                             @if ($re->project_start != null)
                             <span style="font-weight: bold;">
-                                {{trans('message.projectDuration')}}
+                                {{ trans('message.projectDuration') }}
                             </span>
                             <span style="padding-left: 10px;">
                                 {{\Carbon\Carbon::parse($re->project_start)->thaidate('j F Y') }} ถึง {{\Carbon\Carbon::parse($re->project_end)->thaidate('j F Y') }}
                             </span>
                             @else
                             <span style="font-weight: bold;">
-                                {{trans('message.projectDuration')}}
+                                {{ trans('message.projectDuration') }}
                             </span>
                             <span>
 
@@ -77,29 +77,29 @@
                     </td> -->
                         <!-- <td>{{$re->budget}}</td> -->
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">{{trans('message.projectFund')}}</span>
+                            <span style="font-weight: bold;">{{ trans('message.researchFundType') }}</span>
                             <span style="padding-left: 10px;"> @if(is_null($re->fund))
                                 @else
                                 {{$re->fund->fund_type}}
                                 @endif</span>
                         </div>
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">{{trans('message.projectFundAgent')}}</span>
+                            <span style="font-weight: bold;">{{ trans('message.fundingAgency') }}</span>
                             <span style="padding-left: 10px;"> @if(is_null($re->fund))
                                 @else
                                 {{$re->fund->support_resource}}
                                 @endif</span>
                         </div>
                         <div style="padding-bottom: 10px;">
-                            <span style="font-weight: bold;">{{trans('message.projectRespon')}}</span>
+                            <span style="font-weight: bold;">{{ trans('message.responsibleAgency') }}</span>
                             <span style="padding-left: 10px;">
                                 {{$re->responsible_department}}
                             </span>
                         </div>
                         <div style="padding-bottom: 10px;">
 
-                            <span style="font-weight: bold;">{{trans('message.projectBudget')}}</span>
-                            <span style="padding-left: 10px;"> {{number_format($re->budget)}} {{ App::getLocale() == 'th' ? 'บาท' : 'Bath' }}</span>
+                            <span style="font-weight: bold;">{{ trans('message.allocatedBudget') }}</span>
+                            <span style="padding-left: 10px;"> {{number_format($re->budget)}} บาท</span>
                         </div>
                     </td>
 
@@ -112,15 +112,15 @@
                     </td>
                     @if($re->status == 1)
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge badge-success">{{ App::getLocale() == 'th' ? 'ยื่นขอ' : 'Apply for a request' }}</label></h6>
+                        <h6><label class="badge badge-success">{{ trans('message.apply') }}</label></h6>
                     </td>
                     @elseif($re->status == 2)
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge bg-warning text-dark">{{ App::getLocale() == 'th' ? 'ดำเนินการ' : 'In progress' }}</label></h6>
+                        <h6><label class="badge bg-warning text-dark">{{ trans('message.proceed') }}</label></h6>
                     </td>
                     @else
                     <td style="vertical-align: top;text-align: left;">
-                        <h6><label class="badge bg-dark">{{ App::getLocale() == 'th' ? 'ปิดโครงการ' : 'Project closed' }}</label>
+                        <h6><label class="badge bg-dark">{{ trans('message.closeProject') }}</label>
                             <h6>
                     </td>
                     @endif

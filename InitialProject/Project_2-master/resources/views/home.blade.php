@@ -63,11 +63,11 @@
         <!-- Previous / Next Buttons -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">{{ trans('message.previous') }}</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">{{  trans('message.next') }}</span>
         </button>
         </div>
     </div>
@@ -121,14 +121,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{trans('message.reference2')}}</h5>
+                    <h5 class="modal-title">{{ trans('message.reference') }} (APA)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="name">
                     <!-- <p>Modal body text goes here.</p> -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('message.close') }}</button>
                     <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
@@ -146,9 +146,17 @@
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
                         @if (!$loop->last)
+                        @if (app()->getLocale() == 'en')
                         {{$n}}
                         @else
-                        Before {{$n}}
+                        {{$n+543}}
+                        @endif
+                        @else
+                        @if (app()->getLocale() == 'en')
+                        {{ trans('message.before') }} {{$n}}
+                        @else
+                        {{ trans('message.before') }} {{$n+543}}
+                        @endif
                         @endif
 
                     </button>
@@ -169,7 +177,7 @@
                                     <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
-                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{trans('message.reference1')}}]</button>
+                                    <button style="padding: 0;"class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
                                 </p>
                             </div>
                         </div>
@@ -268,7 +276,7 @@
                 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'Number',
+                    labelString: '{{ trans("message.number") }}',
 
                 },
                 ticks: {
@@ -279,14 +287,14 @@
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'Year'
+                    labelString: '{{ trans("message.year") }}'
                 }
             }]
         },
 
         title: {
             display: true,
-            text: "{{ trans('message.barChart1') }}",
+            text: '{{ trans("message.titleReportHome") }}',
             fontSize: 20
         }
 
@@ -315,7 +323,7 @@
         document.getElementById("all").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sum}" data-speed="1500"></h2>
-                <p class="count-text ">{{trans('message.summary')}}</p>`
+                <p class="count-text ">{{ trans('message.summary') }}</p>`
         document.getElementById("scopus").innerHTML += `
                 <i class="count-icon fa fa-book fa-2x"></i>
                 <h2 class="timer count-title count-number" data-to="${sumsco}" data-speed="1500"></h2>
