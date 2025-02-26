@@ -376,7 +376,7 @@ Colors:
             border-bottom-color: #959595;
         }
 
- /***************************************** ที่ออกแบบใหม่ของLogin  ************************************/
+ /***************************************** ที่ออกแบบใหม่แปลภาษาของLogin  ************************************/
         .language-switcher {
             display: inline-flex;
             border: 1px solid #c2c2c2;
@@ -411,6 +411,10 @@ Colors:
         }
 
         .lang-item-en {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .lang-item-cn {
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
         }

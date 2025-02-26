@@ -102,6 +102,10 @@
                                 onclick="window.location.href='{{ route('langswitch', 'en') }}'">
                             EN
                         </button>
+                        <button class="lang-item lang-item-64 lang-item-en current-lang {{ App::getLocale() == 'cn' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'cn') }}'">
+                            CN
+                        </button>
                     </div>
                 </li>
 

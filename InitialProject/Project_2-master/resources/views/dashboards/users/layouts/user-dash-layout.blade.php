@@ -41,6 +41,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
 
         .lang-item-en {
+            border-radius: 0;
+        }
+        .lang-item-cn {
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
         }
@@ -121,6 +124,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <button class="lang-item lang-item-63 lang-item-en current-lang {{ App::getLocale() == 'en' ? 'active' : '' }}" 
                                 onclick="window.location.href='{{ route('langswitch', 'en') }}'">
                             EN
+                        </button>
+                        <button class="lang-item lang-item-64 lang-item-en current-lang {{ App::getLocale() == 'cn' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'cn') }}'">
+                            CN
                         </button>
                     </div>
                 </li>
