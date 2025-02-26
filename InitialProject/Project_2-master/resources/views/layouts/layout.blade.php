@@ -96,23 +96,23 @@
                     </li>
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <span
-                                class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
-                            {{ Config::get('languages')[App::getLocale()]['display'] }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
-                            <a class="dropdown-item" href="{{ route('langswitch', $lang) }}"><span
-                                    class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
-                                {{$language['display']}}</a>
-                            @endif
-                            @endforeach
-                        </div>
-                    </li>
+
+                    <li class="nav-item">
+                    <div class="language-switcher">
+                        <button class="lang-item lang-item-44 lang-item-th lang-item-first {{ App::getLocale() == 'th' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'th') }}'">
+                            TH
+                        </button>
+                        <button class="lang-item lang-item-63 lang-item-en current-lang {{ App::getLocale() == 'en' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'en') }}'">
+                            EN
+                        </button>
+                        <button class="lang-item lang-item-64 lang-item-en current-lang {{ App::getLocale() == 'cn' ? 'active' : '' }}" 
+                                onclick="window.location.href='{{ route('langswitch', 'cn') }}'">
+                            CN
+                        </button>
+                    </div>
+                </li>
 
 
                 </ul>
