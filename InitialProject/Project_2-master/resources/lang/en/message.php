@@ -292,5 +292,4 @@ return [
 'editPermission' => 'Edit Permission',
 'department' => 'department',
 
-
 ];
