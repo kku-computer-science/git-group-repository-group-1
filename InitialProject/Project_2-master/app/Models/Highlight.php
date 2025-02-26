@@ -10,11 +10,19 @@ class Highlight extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'description', 
-        'image_url', 
-        'priority', 
-        'status', 
-        'expiration_date'
+        'title_en',
+        'title_th',
+        'title_cn',
+        'description_en',
+        'description_th',
+        'description_cn',
+        'image_url_en',
+        'image_url_th',
+        'image_url_cn',
+        'priority'
+    ];
+
+    protected $attributes = [
+        'priority' => 1, //
     ];
 }

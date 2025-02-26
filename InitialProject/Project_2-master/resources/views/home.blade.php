@@ -33,6 +33,7 @@
     }
 </style>
 @section('content')
+<!--highlight-->
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -46,16 +47,16 @@
             @endforeach
         </div>
 
-        <!-- Carousel Items (Dynamic) -->
+        <!--Highlight image-->
         <div class="carousel-inner">
             @forelse ($highlights as $index => $highlight)
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                    <img src="{{ asset($highlight->image_url) }}" class="d-block w-100" alt="{{ $highlight->title }}">
+                    <img src="{{ asset($highlight->image_url_en) }}" class="d-block w-100" alt="{{ $highlight->title }}">
                 </div>
             @empty
                 <!-- Default image if no highlights exist -->
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/default_banner.png') }}" class="d-block w-100" alt="Default Image">
+                    <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="Default Image">
                 </div>
             @endforelse
         </div>
@@ -63,14 +64,15 @@
         <!-- Previous / Next Buttons -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ trans('message.previous') }}</span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{  trans('message.next') }}</span>
+            <span class="visually-hidden">Next</span>
         </button>
         </div>
     </div>
+
 
 
     <!-- Modal -->
