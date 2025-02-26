@@ -3,19 +3,12 @@ return [
 'Home' => 'หน้าแรก',
 'Researchers' => 'ผู้วิจัย',
 'ResearchProj' => 'โครงการวิจัย',
-<<<<<<< HEAD
-=======
 'academicServiceProject' => 'โครงการบริการวิชาการ',
->>>>>>> main
 'ResearchGroup' => 'กลุ่มวิจัย',
 'Report' => 'รายงาน',
 'details' =>'รายละเอียดเพิ่มเติม',
 'expertise' =>'ความเชี่ยวชาญ',
 'publications' => 'ผลงานตีพิมพ์ (5 ปี ย้อนหลัง)',
-<<<<<<< HEAD
-'education'=>'การศึกษา',
-'publications2' => 'ผลงานตีพิมพ์',
-=======
 'education'=> 'การศึกษา',
 'publications2' => 'ผลงานตีพิมพ์',
 'year' => 'ปี',
@@ -115,6 +108,5 @@ return [
 'yearOfPublication' => 'ปีที่ตีพิมพ์',
 'name' => 'ชื่อ',
 
->>>>>>> main
 
 ];

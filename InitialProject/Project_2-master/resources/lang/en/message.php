@@ -3,10 +3,7 @@ return [
 'Home' => 'Home',
 'Researchers' => 'Researchers',
 'ResearchProj' => 'Research Project',
-<<<<<<< HEAD
-=======
 'academicServiceProject' => 'Academic Service Project',
->>>>>>> main
 'ResearchGroup' => 'Research Group',
 'Report' => 'Reports',
 'details' =>'More details',
@@ -14,8 +11,6 @@ return [
 'publications' => 'Publications (In the Last 5 Years)',
 'education'=>'Education',
 'publications2' => 'Publications',
-<<<<<<< HEAD
-=======
 'year' => 'Year',
 'number' => 'Number',
 'before' => 'Before',
@@ -114,5 +109,4 @@ return [
 'name' => 'Name',
 
 
->>>>>>> main
 ];
