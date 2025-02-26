@@ -13,61 +13,61 @@
     @endif
     <div class="card" style="padding: 16px;">
         <div class="card-body">
-            <h4 class="card-title">แก้ไขข้อมูลกลุ่มวิจัย</h4>
-            <p class="card-description">กรอกข้อมูลแก้ไขรายละเอียดกลุ่มวิจัย</p>
+            <h4 class="card-title">{{ trans('message.researchGroupEdit') }}</h4>
+            <p class="card-description">{{ trans('message.researchGroupDetailEdit') }}</p>
             <form action="{{ route('researchGroups.update',$researchGroup->id) }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 @method('PUT')
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>ชื่อกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3 "><b>{{ trans('message.researchGroupNameTh') }}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_th" value="{{ $researchGroup->group_name_th }}" class="form-control"
                             placeholder="ชื่อกลุ่มวิจัย (ภาษาไทย)">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3 "><b>ชื่อกลุ่มวิจัย (English)</b></p>
+                    <p class="col-sm-3 "><b>{{ trans('message.researchGroupNameEn') }}</b></p>
                     <div class="col-sm-8">
                         <input name="group_name_en" value="{{ $researchGroup->group_name_en }}" class="form-control"
                             placeholder="ชื่อกลุ่มวิจัย (English)">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>คำอธิบายกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDescribeTh') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_th" value="{{ $researchGroup->group_desc_th }}" class="form-control"
                             style="height:90px">{{ $researchGroup->group_desc_th }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>คำอธิบายกลุ่มวิจัย (English)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDescribeEn') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_desc_en" value="{{ $researchGroup->group_desc_en }}" class="form-control"
                             style="height:90px">{{ $researchGroup->group_desc_en }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>รายละเอียดกลุ่มวิจัย (ภาษาไทย)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDetailTh') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_th" value="{{ $researchGroup->group_detail_th }}" class="form-control"
                             style="height:90px">{{ $researchGroup->group_detail_th }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>รายละเอียดกลุ่มวิจัย (English)</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.researchGroupDetailEn') }}</b></p>
                     <div class="col-sm-8">
                         <textarea name="group_detail_en" value="{{ $researchGroup->group_detail_en }}" class="form-control"
                             style="height:90px">{{ $researchGroup->group_detail_en }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>image</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.image') }}</b></p>
                     <div class="col-sm-8">
                         <input type="file" name="group_image" class="form-control" >
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3"><b>หัวหน้ากลุ่มวิจัย</b></p>
+                    <p class="col-sm-3"><b>{{ trans('message.projectManager') }}</b></p>
                     <div class="col-sm-8">
                         <select id='head0' name="head">
                             @foreach($researchGroup->user as $u)
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <p class="col-sm-3 pt-4"><b>สมาชิกกลุ่มวิจัย</b></p>
+                    <p class="col-sm-3 pt-4"><b>{{ trans('message.projectMember') }}</b></p>
                     <div class="col-sm-8">
                         <table class="table" id="dynamicAddRemove">
                             <tr>
@@ -94,8 +94,8 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary mt-5">Submit</button>
-                <a class="btn btn-light mt-5" href="{{ route('researchGroups.index') }}"> Back</a>
+                <button type="submit" class="btn btn-primary mt-5">{{ trans('message.submit') }}</button>
+                <a class="btn btn-light mt-5" href="{{ route('researchGroups.index') }}">{{ trans('message.back') }}</a>
             </form>
         </div>
     </div>

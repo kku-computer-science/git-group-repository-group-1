@@ -36,27 +36,27 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group row">
-                        <label for="exampleInputac_name" class="col-sm-3 col-form-label">ชื่อ</label>
+                        <label for="exampleInputac_name" class="col-sm-3 col-form-label">{{ trans('message.name') }}</label>
                         <div class="col-sm-9">
                             <input type="text" name="ac_name" value="{{ $patent->ac_name }}" class="form-control" placeholder="Name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_type" class="col-sm-3 col-form-label">ประเภท</label>
+                        <label for="exampleInputac_type" class="col-sm-3 col-form-label">{{ trans('message.type') }}</label>
                         <div class="col-sm-9">
                             <input type="text" name="ac_type" value="{{ $patent->ac_type }}" class="form-control" placeholder="ac_type">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_year" class="col-sm-3 col-form-label">วันที่ได้รับลิขสิทธิ์</label>
+                        <label for="exampleInputac_year" class="col-sm-3 col-form-label">{{ trans('message.copyrihtDate') }}</label>
                         <div class="col-sm-9">
                             <input type="date" name="ac_year" value="{{ $patent->ac_year }}" class="form-control" placeholder="ac_year">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleInputac_refnumber" class="col-sm-3 col-form-label">เลขทะเบียน</label>
+                        <label for="exampleInputac_refnumber" class="col-sm-3 col-form-label">{{ trans('message.registrationNumber') }}</label>
                         <div class="col-sm-9">
-                            <input type="text" name="ac_refnumber" value="{{ $patent->ac_refnumber }}" class="form-control" placeholder="เลขทะเบียน">
+                            <input type="text" name="ac_refnumber" value="{{ $patent->ac_refnumber }}" class="form-control" placeholder="{{ trans('message.registrationNumber') }}">
                         </div>
                     </div>
                     <!-- <div class="form-group row">

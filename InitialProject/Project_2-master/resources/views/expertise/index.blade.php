@@ -100,14 +100,14 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>{{ trans('message.name') }}:</strong>
                                 <input type="text" name="expert_name" id="expert_name" class="form-control" placeholder="Expert_name" onchange="validate()">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>Submit</button>
-                            <a href="{{ route('experts.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" id="btn-save" name="btnsave" class="btn btn-primary " disabled>{{ trans('message.submit') }}</button>
+                            <a href="{{ route('experts.index') }}" class="btn btn-danger">{{ trans('message.cancel') }}</a>
                         </div>
                     </div>
                 </form>
