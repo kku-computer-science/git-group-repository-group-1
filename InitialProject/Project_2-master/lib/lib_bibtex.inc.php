@@ -17,7 +17,7 @@ class Bibtex {
 	var $usedCnt = 0;
 	
 
-	//////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////
 	// Constructor
 	//////////////////////////////////////////////////////////////////////////////
 	function __construct() {
@@ -112,37 +112,37 @@ class Bibtex {
 			$line = preg_replace($pattern, $replacement, $line);
 
 			$pattern = "/\{\\\'(\w+)\}/";
-			$replacement = '&${1}acute;';	// for: á
+			$replacement = '&${1}acute;';	// for: ï¿½
 			$line = preg_replace($pattern, $replacement, $line);
 			$pattern = "/\\\'\{(\w+)\}/";
 			$line = preg_replace($pattern, $replacement, $line);
 			
 			$pattern = "/\{\\\`(\w+)\}/";
-			$replacement = '&${1}grave;';	// for: à
+			$replacement = '&${1}grave;';	// for: ï¿½
 			$line = preg_replace($pattern, $replacement, $line);
 
 			$pattern = "/\{\\\^(\w+)\}/";
-			$replacement = '&${1}circ;';	// for: â		-- needs to be re-checked, somehow, doesnt always work  (jv, 2015-11-12)
+			$replacement = '&${1}circ;';	// for: ï¿½		-- needs to be re-checked, somehow, doesnt always work  (jv, 2015-11-12)
 			$line = preg_replace($pattern, $replacement, $line);
 			
 			$pattern = '/\{\\\"(\w+)\}/';
-			$replacement = '&${1}uml;';		// for: ü
+			$replacement = '&${1}uml;';		// for: ï¿½
 			$line = preg_replace($pattern, $replacement, $line);
 			$pattern = '/\\\"\{[\\\]?(\w+)\}/';
 			$line = preg_replace($pattern, $replacement, $line);
 						
-			$replacement = '&ccedil;';		// for: ç
+			$replacement = '&ccedil;';		// for: ï¿½
 			$line = str_replace('\cc', $replacement, $line);
 			$line = preg_replace($pattern, $replacement, $line);
 			$pattern = '/\\\c\{c\}/';
 			$line = preg_replace($pattern, $replacement, $line);
 
 			$pattern = "/\{\\\\[o]{1}\}/";
-			$replacement = '&oslash;';	// for: ø
+			$replacement = '&oslash;';	// for: ï¿½
 			$line = preg_replace($pattern, $replacement, $line);
 
 			$pattern = "/\{\\\\[O]{1}\}/";
-			$replacement = '&Oslash;';	// for: Ø
+			$replacement = '&Oslash;';	// for: ï¿½
 			$line = preg_replace($pattern, $replacement, $line);
 
 			$pattern = '/\{\\\noopsort\{\w+\}\}/';	// remove meta-tag 'noopsort' (currently not supported)
