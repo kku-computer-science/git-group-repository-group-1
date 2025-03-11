@@ -1,9 +1,9 @@
-@extends('dashboards.users.layouts.user-dash-layout') 
+@extends('dashboards.users.layouts.user-dash-layout')
 
 @section('content')
 
 <div class="container">
-    <div class="card" style="padding: 16px;">
+    <div class="card shadow-sm p-4">
         <div class="card-body">
             <h4 class="card-title">Highlight List</h4>
 
@@ -13,8 +13,8 @@
             </a>
 
             <div class="table-responsive">
-                <table id="highlightsTable" class="table table-striped">
-                    <thead>
+                <table id="highlightsTable" class="table table-bordered table-striped">
+                    <thead class="thead-dark">
                         <tr>
                             <th>No.</th>
                             <th>Title (EN)</th>
@@ -23,6 +23,7 @@
                             <th>Description (TH)</th>
                             <th>Image (EN)</th>
                             <th>Image (TH)</th>
+                            <th>Tags</th>
                             <th>Priority</th>
                             <th>Actions</th>
                         </tr>
@@ -30,37 +31,70 @@
                     <tbody>
                         @foreach ($highlights as $i => $highlight)
                         <tr>
-                            <td>{{ $i + 1 }}</td>
+                            <td class="text-center">{{ $i + 1 }}</td>
                             <td>{{ $highlight->title_en }}</td>
                             <td>{{ $highlight->title_th }}</td>
-                            <td>{{ Str::limit($highlight->description_en, 100) }}</td>
-                            <td>{{ Str::limit($highlight->description_th, 100) }}</td>
-                            <td>
-                                <img src="{{ asset($highlight->image_url_en) }}" alt="Highlight EN" width="100">
+                            <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                {{ $highlight->description_en }}
                             </td>
-                            <td>
-                                <img src="{{ asset($highlight->image_url_th) }}" alt="Highlight TH" width="100">
+                            <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                {{ $highlight->description_th }}
                             </td>
-                            <td>{{ $highlight->priority }}</td>
+                            <td class="text-center">
+                                <img src="{{ asset($highlight->image_url_en) }}" alt="Highlight EN" class="img-thumbnail" width="80">
+                            </td>
+                            <td class="text-center">
+                                <img src="{{ asset($highlight->image_url_th) }}" alt="Highlight TH" class="img-thumbnail" width="80">
+                            </td>
+                            <!--show highlight tag-->
                             <td>
+                                @if($highlight->hasTags()->count() > 0)
+                                    <span class="badge badge-primary">Has Tags</span>
+                                @else
+                                @endif
+                            </td>
+
+                            <td class="text-center">{{ $highlight->priority }}</td>
+                            <td class="text-center">
                                 <!-- Edit Button -->
                                 <a class="btn btn-outline-success btn-sm" href="{{ route('highlights.edit', $highlight->id) }}" title="Edit">
                                     <i class="mdi mdi-pencil"></i>
                                 </a>
 
-                                <!-- Delete Form -->
-                                <form action="{{ route('highlights.destroy', $highlight->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger btn-sm show_confirm" title="Delete">
-                                        <i class="mdi mdi-delete"></i>
-                                    </button>
-                                </form>
+                                <!-- Delete Button with Modal -->
+                                <button class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $highlight->id }}">
+                                    <i class="mdi mdi-delete"></i>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Deletion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this highlight? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
@@ -73,28 +107,16 @@
 
 <script>
     $(document).ready(function() {
-        $('#highlightsTable').DataTable(); // Initialize DataTable
-    });
+        $('#highlightsTable').DataTable({
+            "pageLength": 10
+        });
 
-    //delete confirm
-    $('.show_confirm').click(function(event) {
-        var form = $(this).closest("form");
-        event.preventDefault();
-        swal({
-            title: `Are you sure?`,
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                swal("Highlight deleted successfully!", {
-                    icon: "success",
-                }).then(function() {
-                    form.submit();
-                });
-            }
+        // Delete Confirmation Modal
+        $('.delete-btn').click(function() {
+            let id = $(this).data('id');
+            let action = "{{ url('highlights') }}/" + id;
+            $('#deleteForm').attr('action', action);
+            $('#deleteModal').modal('show');
         });
     });
 </script>
