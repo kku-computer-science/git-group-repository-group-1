@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 07:47 AM
+-- Generation Time: Mar 11, 2025 at 08:40 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -2448,7 +2448,28 @@ CREATE TABLE `highlights` (
 
 INSERT INTO `highlights` (`id`, `title_en`, `title_th`, `description_en`, `description_th`, `image_url_en`, `image_url_th`, `priority`, `created_at`, `updated_at`) VALUES
 (10, '1', '1', '1', '1', 'storage/highlights/en/uJfoQbHKspNSnYyjTUCWv4CqSZcc7YYx43psyC69.jpg', 'storage/highlights/th/30jvKSBeykhj3yb9yFzifFX6cm1zqgBEQcLK6PcJ.png', 1, '2025-03-08 17:53:53', '2025-03-08 18:11:27'),
-(11, '2', '2', '2', '2', 'storage/highlights/en/F2mOJmSkypmqciwywX7IS1uqh1em74kDwBWAKZW9.jpg', 'storage/highlights/th/oQIqRGQCmOz2hjI2RIvqMrVWxyaXBPA5fspqoZ0q.png', 1, '2025-03-08 18:45:25', '2025-03-08 18:45:25');
+(11, '2', '2', '2', '2', 'storage/highlights/en/F2mOJmSkypmqciwywX7IS1uqh1em74kDwBWAKZW9.jpg', 'storage/highlights/th/oQIqRGQCmOz2hjI2RIvqMrVWxyaXBPA5fspqoZ0q.png', 1, '2025-03-08 18:45:25', '2025-03-08 18:45:25'),
+(12, '123', '213', '32', '213', 'storage/highlights/en/NYf6Y0u2IPVYttoZO8K40OnYARP9W4pfNRl37MMD.png', 'storage/highlights/th/kEun7CmgwPXckMF2l8AsYWWjZpXTNBUyTkAmksoj.png', 3, '2025-03-10 14:23:46', '2025-03-10 14:23:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `highlight_has_tags`
+--
+
+CREATE TABLE `highlight_has_tags` (
+  `highlight_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `highlight_has_tags`
+--
+
+INSERT INTO `highlight_has_tags` (`highlight_id`, `tag_id`) VALUES
+(12, 1),
+(11, 1),
+(10, 1);
 
 -- --------------------------------------------------------
 
@@ -2496,8 +2517,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2022_04_17_221919_create_academicworks_table', 5),
 (28, '2022_04_17_222540_create_user_of_academicworks', 6),
 (29, '2022_04_17_222553_create_author_of_academicworks', 7),
-(30, '2022_04_29_143111_create_outsiders_table', 8),
-(31, '2022_04_29_155014_create_outsiders_work_of_project_table', 9);
+(30, '2022_04_29_143111_create_outsiders_table', 8);
 
 -- --------------------------------------------------------
 
@@ -2703,19 +2723,6 @@ INSERT INTO `outsiders` (`id`, `fname`, `lname`, `title_name`, `created_at`, `up
 (3, 'watchara', 'srtitonwong', 'dr.', '2022-04-29 15:08:46', '2022-04-29 15:08:46'),
 (4, 'wat', 'geng', 'ass.', '2022-04-29 15:25:00', '2022-04-29 15:25:00'),
 (5, 'นำโชค', 'ไม่มี', 'ศ. ดร.', '2022-05-16 04:24:05', '2022-05-16 04:24:05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `outsiders_work_of_project`
---
-
-CREATE TABLE `outsiders_work_of_project` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `outsider_id` bigint(20) UNSIGNED NOT NULL,
-  `research_project_id` bigint(20) UNSIGNED NOT NULL,
-  `role` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4333,6 +4340,28 @@ INSERT INTO `source_papers` (`id`, `source_data_id`, `paper_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'kku', NULL, NULL),
+(13, 'researcher', '2025-03-10 19:10:56', '2025-03-10 19:10:56'),
+(14, 'CS', '2025-03-11 07:39:25', '2025-03-11 07:39:25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -5477,6 +5506,13 @@ ALTER TABLE `highlights`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `highlight_has_tags`
+--
+ALTER TABLE `highlight_has_tags`
+  ADD KEY `fk_highlights` (`highlight_id`),
+  ADD KEY `fk_tags` (`tag_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -5501,14 +5537,6 @@ ALTER TABLE `model_has_roles`
 --
 ALTER TABLE `outsiders`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `outsiders_work_of_project`
---
-ALTER TABLE `outsiders_work_of_project`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `outsiders_work_of_project_outsider_id_foreign` (`outsider_id`),
-  ADD KEY `outsiders_work_of_project_research_project_id_foreign` (`research_project_id`);
 
 --
 -- Indexes for table `papers`
@@ -5577,6 +5605,12 @@ ALTER TABLE `source_papers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `source_papers_source_data_id_foreign` (`source_data_id`),
   ADD KEY `source_papers_paper_id_foreign` (`paper_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -5687,7 +5721,7 @@ ALTER TABLE `funds`
 -- AUTO_INCREMENT for table `highlights`
 --
 ALTER TABLE `highlights`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -5700,12 +5734,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `outsiders`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `outsiders_work_of_project`
---
-ALTER TABLE `outsiders_work_of_project`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `papers`
@@ -5754,6 +5782,12 @@ ALTER TABLE `source_data`
 --
 ALTER TABLE `source_papers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3875;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -5822,6 +5856,13 @@ ALTER TABLE `funds`
   ADD CONSTRAINT `fund_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
+-- Constraints for table `highlight_has_tags`
+--
+ALTER TABLE `highlight_has_tags`
+  ADD CONSTRAINT `fk_highlights` FOREIGN KEY (`highlight_id`) REFERENCES `highlights` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
@@ -5832,13 +5873,6 @@ ALTER TABLE `model_has_permissions`
 --
 ALTER TABLE `model_has_roles`
   ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `outsiders_work_of_project`
---
-ALTER TABLE `outsiders_work_of_project`
-  ADD CONSTRAINT `outsiders_work_of_project_outsider_id_foreign` FOREIGN KEY (`outsider_id`) REFERENCES `outsiders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `outsiders_work_of_project_research_project_id_foreign` FOREIGN KEY (`research_project_id`) REFERENCES `research_projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `programs`

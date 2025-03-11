@@ -22,6 +22,10 @@ class CreateHighlightsTable extends Migration
             $table->integer('priority');
             $table->timestamps();
         });
+
+        Schema::table('highlights', function (Blueprint $table) {
+            $table->json('tags')->nullable()->after('priority');
+        });
     }
 
     /**
@@ -30,5 +34,10 @@ class CreateHighlightsTable extends Migration
     public function down(): void
     {
         Schema::dropIfExists('highlights');
+
+        Schema::table('highlights', function (Blueprint $table) {
+            $table->dropColumn('tags');
+        });
     }
+
 }

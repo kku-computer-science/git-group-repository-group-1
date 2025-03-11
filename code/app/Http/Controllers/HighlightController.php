@@ -5,20 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Highlight;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Tag;
+
 
 class HighlightController extends Controller
 {
     public function index()
     {
         $highlights = Highlight::orderBy('priority', 'asc')->get();
+        $highlights = Highlight::with('tags')->get();
         return view('highlights.index', compact('highlights'));
     }
 
+
+
     public function create()
     {
-        return view('highlights.create');
+        $existingTags = Tag::pluck('name')->toArray();
+
+        return view('highlights.create', compact('existingTags'));
     }
 
+    
     //add Highlight
     //upload image
     public function store(Request $request)
@@ -51,8 +59,12 @@ class HighlightController extends Controller
 
     public function edit(Highlight $highlight)
     {
-        return view('highlights.edit', compact('highlight'));
+        $existingTags = Tag::pluck('name')->toArray();
+        $highlightTags = $highlight->tags()->pluck('name')->toArray();
+    
+        return view('highlights.edit', compact('highlight', 'existingTags', 'highlightTags'));
     }
+    
 
     //อัปเดต Highlight
     public function update(Request $request, Highlight $highlight)
@@ -64,6 +76,8 @@ class HighlightController extends Controller
             'description_th' => 'nullable|string',
             'image_en' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'image_th' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'tags' => 'nullable|array',
+            'tags.*' => 'string',
             'priority' => 'required|integer',
         ]);
 
@@ -96,6 +110,17 @@ class HighlightController extends Controller
             'description_th' => $request->description_th,
             'priority' => $request->priority,
         ]);
+
+        //จัดการ Tags    
+        $tags = $request->input('tags', []);
+        $tagIds = [];
+
+        foreach ($tags as $tagName) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $tagIds[] = $tag->id;
+        }
+
+        $highlight->tags()->sync($tagIds);
 
         return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully.');
     }
