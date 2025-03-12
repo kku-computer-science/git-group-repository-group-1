@@ -28,7 +28,7 @@ ${PRIORITY_NEW}     2
 
 
 *** Keywords ***
-Open Browser
+Open Browser To Home Page
     Open Browser    ${URL_HOME}    ${BROWSER}
     Maximize Browser Window
 
@@ -92,7 +92,7 @@ Add Tags
     Click Element    xpath=//button[contains(text(),'CS')]
     Wait Until Element Is Visible    id=newTagName    5s
     Input Text    id=newTagName    ${NEW_TAG}
-    Click Button    xpath=//button[@id='addNewTag']
+    Click Button    xpath=//button[@id='addTempTag']
     Sleep    3s
     Click Button    xpath=//button[contains(text(),'Close')]
 
@@ -101,7 +101,7 @@ Add Exist Tags
     Wait Until Element Is Visible    xpath=//h5[contains(text(),'Select Tags')]    5s
     Wait Until Element Is Visible    id=newTagName    5s
     Input Text    id=newTagName    ${NEW_TAG}
-    Click Button    xpath=//button[@id='addNewTag']
+    Click Button    xpath=//button[@id='addTempTag']
     Sleep    3s
     ${ALERT_RESULT} =    Run Keyword And Ignore Error    Handle Alert Error
     Run Keyword If    '${ALERT_RESULT}[0]' == 'PASS'    Log    Alert detected and closed.
@@ -109,7 +109,7 @@ Add Exist Tags
     Sleep    3s
     Input Text    id=newTagName    ${NEW_TAG2}
     Sleep    3s
-    Click Button    xpath=//button[@id='addNewTag']
+    Click Button    xpath=//button[@id='addTempTag']
     Sleep    3s
     Click Button    xpath=//button[contains(text(),'Close')]
 

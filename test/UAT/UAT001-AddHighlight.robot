@@ -11,7 +11,7 @@ Add New Highlight
     Fill Highlight Form
     Add Tags
     Submit Highlight Form
-    Sleep    3s
+    Sleep    2s
     Verify Highlight Added
     Close Browser Session
     
@@ -24,7 +24,7 @@ Add New Highlight Close Exist Tag
     Fill Highlight Form
     Add Exist Tags
     Submit Highlight Form
-    Sleep    3s
+    Sleep    2s
     Verify Highlight Added
     Close Browser Session
 
@@ -36,7 +36,7 @@ Add New Highlight Not Tag
     Sleep    3s
     Fill Highlight Form
     Submit Highlight Form
-    Sleep    3s
+    Sleep    2s
     Verify Highlight Added
     Close Browser Session
     
@@ -50,7 +50,16 @@ Edit Highlight
     Fill Edit Highlight Form
     Remove One Tag In Edit Form
     Click Update Button
+    Sleep    2s
+    Close Browser Session
+    
+Delete Highlight
+    Open Login Page And Login
     Sleep    3s
+    Click Manage Highlight Menu
+    Sleep    3s
+    Delete Highlight
+    Sleep    2s
     Close Browser Session
 
 Delete Tag Of Highlight
@@ -60,5 +69,5 @@ Delete Tag Of Highlight
     Click Add Highlight Button
     Sleep    3s
     Delete Tag
-    Sleep    3s
+    Sleep    2s
     Close Browser Session

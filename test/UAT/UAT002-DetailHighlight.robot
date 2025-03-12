@@ -2,5 +2,5 @@
 Resource    resource.robot
 
 *** Test Cases ***
-    Open Browser
+    Open Browser To Home Page
     Close Browser Session
