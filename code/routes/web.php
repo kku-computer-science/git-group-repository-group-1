@@ -95,6 +95,9 @@ Route::get('/export', [ExportPaperController::class, 'exportUsers'])->name('expo
 Route::get('bib/{id}', [BibtexController::class, 'getbib'])->name('bibtex');
 //สำหรับแสดงรายละเอียด highlight
 Route::get('/highlight/{id}', [HighlightController::class, 'show'])->name('highlight.show');
+//สำหรับแสดง highlight ที่เกี่ยวข้อง
+Route::get('/highlight/tag/{tag_id}', [HighlightController::class, 'showByTag'])->name('highlight.byTag');
+
 //Route::get('bib/{id}', [BibtexController::class, 'index'])->name('bibtex');
 //Route::get('change/lang', [LocalizationController::class,'lang_change'])->name('LangChange');
 
