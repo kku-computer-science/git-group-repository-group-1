@@ -22,6 +22,7 @@ class HighlightController extends Controller
     public function create()
     {
         $existingTags = Tag::pluck('name')->toArray();
+        $existingTags = Tag::all();
 
         return view('highlights.create', compact('existingTags'));
     }
@@ -38,13 +39,15 @@ class HighlightController extends Controller
             'description_th' => 'nullable|string',
             'image_en' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'image_th' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'tags' => 'nullable|array',
+            'tags.*' => 'string',
             'priority' => 'required|integer',
         ]);
 
         $imagePathEn = $request->file('image_en')->store('highlights/en', 'public');
         $imagePathTh = $request->file('image_th')->store('highlights/th', 'public');
 
-        Highlight::create([
+        $highlight = Highlight::create([
             'title_en' => $request->title_en,
             'title_th' => $request->title_th,
             'description_en' => $request->description_en,
@@ -54,9 +57,22 @@ class HighlightController extends Controller
             'priority' => $request->priority,
         ]);
 
+        //เชื่อมโยงแท็ก (Tags) กับ Highlight 
+        $tags = $request->input('tags', []);
+        $tagIds = [];
+        
+        foreach ($tags as $tagName) {
+            $tag = Tag::firstOrCreate(['name' => $tagName]);
+            $tagIds[] = $tag->id;
+        }
+        
+        //เชื่อมโยงแท็กกับ Highlight โดยใช้ sync()
+        $highlight->tags()->sync($tagIds);
+
         return redirect()->route('highlights.index')->with('success', 'Highlight created successfully.');
     }
 
+    //แก้ไข Highlight
     public function edit(Highlight $highlight)
     {
         $existingTags = Tag::pluck('name')->toArray();
@@ -111,15 +127,15 @@ class HighlightController extends Controller
             'priority' => $request->priority,
         ]);
 
-        //จัดการ Tags    
+        //เชื่อมโยงแท็ก (Tags) กับ Highlight 
         $tags = $request->input('tags', []);
-        $tagIds = [];
+        $tagIds = []; 
 
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
             $tagIds[] = $tag->id;
         }
-
+        //เชื่อมโยงแท็กกับ Highlight โดยใช้ sync()
         $highlight->tags()->sync($tagIds);
 
         return redirect()->route('highlights.index')->with('success', 'Highlight updated successfully.');
