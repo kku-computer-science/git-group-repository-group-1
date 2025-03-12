@@ -60,6 +60,14 @@
         object-fit: cover;
     }
 
+    .background-img {
+        background-image: url("{{ asset('https://api.computing.kku.ac.th//storage/images/1661921029-3.png') }}");
+        background-position: center center;
+        background-size: cover;
+        padding: 15px;
+        margin: 0px;
+    }
+
 </style>
 @section('content')
 <!--highlight-->
@@ -122,7 +130,7 @@ $filteredHighlights = $highlights->reject(fn($highlight) =>
 
     <!-- List of highlights -->
     <div class="highlight-section mt-5">
-        <div class="highlight-title">
+        <div class="background-img highlight-title">
             Highlight
         </div>
         <div class="row g-0">
