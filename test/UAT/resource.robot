@@ -17,6 +17,15 @@ ${PRIORITY}         1
 ${NEW_TAG}          New_Tag_Test_1
 ${NEW_TAG2}         New_Tag_Test_2
 
+${TITLE_EN_NEW}     Updated Title EN
+${TITLE_TH_NEW}     อัปเดตชื่อภาษาไทย
+${DESCRIPTION_EN_NEW}     Updated Description EN
+${DESCRIPTION_TH_NEW}     อัปเดตคำอธิบายภาษาไทย
+${IMAGE_EN_NEW}     ${CURDIR}/test_image_en_new.jpg
+${IMAGE_TH_NEW}     ${CURDIR}/test_image_th_new.jpg
+${PRIORITY_NEW}     2
+
+
 *** Keywords ***
 Open Login Page And Login
     Open Browser    ${URL_LOGIN}    ${BROWSER}
@@ -35,6 +44,12 @@ Click Manage Highlight Menu
 
 Click Add Highlight Button
     Click Element    xpath=//a[contains(@class, 'btn-primary') and .//i[contains(@class, 'mdi-plus')]]
+    
+Click Update Button
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'Update')]    5s
+    Scroll Element Into View    xpath=//button[contains(text(),'Update')]
+    Sleep    1s
+    Click Button    xpath=//button[contains(text(),'Update')]
 
 Delete Tag
     Click Button    xpath=//button[contains(text(),'Add Tag')]
@@ -104,6 +119,38 @@ Submit Highlight Form
 Verify Highlight Added
     Page Should Contain    ${TITLE_EN}
     Page Should Contain    ${TITLE_TH}
+    
+Verify Highlight Edited
+    Page Should Contain    ${TITLE_EN_NEW}
+    Page Should Contain    ${TITLE_TH_NEW}
+    
+Click Edit Highlight Button
+    Wait Until Element Is Visible    xpath=//td[contains(@class,'text-center')]//a[contains(@class, 'btn-outline-success')]    5s
+    Scroll Element Into View    xpath=//td[contains(@class,'text-center')]//a[contains(@class, 'btn-outline-success')]
+    Sleep    1s
+    Click Element    xpath=//td[contains(@class,'text-center')]//a[contains(@class, 'btn-outline-success')]
+    
+Fill Edit Highlight Form
+    Wait Until Element Is Visible    name=title_en    5s
+    Clear Element Text    name=title_en
+    Input Text    name=title_en    ${TITLE_EN_NEW}
+    Clear Element Text    name=title_th
+    Input Text    name=title_th    ${TITLE_TH_NEW}
+    Clear Element Text    name=description_en
+    Input Text    name=description_en    ${DESCRIPTION_EN_NEW}
+    Clear Element Text    name=description_th
+    Input Text    name=description_th    ${DESCRIPTION_TH_NEW}
+    Choose File    name=image_en    ${IMAGE_EN_NEW}
+    Choose File    name=image_th    ${IMAGE_TH_NEW}
+    Input Text    name=priority    ${PRIORITY_NEW}
+    Sleep    2s
+    
+Remove One Tag In Edit Form
+    Sleep    2s
+    Wait Until Element Is Visible    xpath=//div[@id='selected-tags']//span[contains(@class,'remove-tag')]    5s
+    Click Element    xpath=(//div[@id='selected-tags']//span[contains(@class,'remove-tag')])[1]
+    Sleep    1s
+    
 
 Close Browser Session
     SeleniumLibrary.Close Browser

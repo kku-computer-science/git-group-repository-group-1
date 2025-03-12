@@ -109,7 +109,7 @@
             $lang = App::getLocale();
             $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
             @endphp
-            <div class="col-md-6 col-lg-4 mb-4">
+            <div class="col-md-6 col-lg-4">
                 <div class="card highlight-card">
                     <a href="{{ route('highlight.show', $highlight->id) }}">
                         <img src="{{ asset($imagePath) }}" class="highlight-img card-img-top" alt="{{ $highlight->title }}">
@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+<br>
 <!-- Modal -->
 <div class="container card-cart d-sm-flex justify-content-center mt-5">
     <div class="col-md-8">
