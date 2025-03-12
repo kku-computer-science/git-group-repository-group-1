@@ -4,8 +4,6 @@
         background-color: #f5f5f5;
         padding: 20px 0;
         border-radius: 5px;
-
-
     }
 
     .count-title {
@@ -22,7 +20,6 @@
         margin-top: 10px;
         margin-bottom: 0;
         text-align: center;
-
     }
 
     .fa-2x {
@@ -30,6 +27,31 @@
         float: none;
         display: table;
         color: #4ad1e5;
+    }
+
+    .highlight-section {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .highlight-title {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        font-size: 24px;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .highlight-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .highlight-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
     }
 </style>
 @section('content')
@@ -55,7 +77,8 @@
                 $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
                 @endphp
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                    <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="{{ $highlight->title }}">
+                    <a href="{{ route('highlight.show', $highlight->id) }}">
+                        <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="{{ $highlight->title }}">
                 </div>
                 @empty
                 <!-- Default image if no highlights exist -->
@@ -75,126 +98,142 @@
             </button>
         </div>
     </div>
-
-
-
-    <!-- Modal -->
-
-
-
-    <div class="container card-cart d-sm-flex justify-content-center mt-5">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="chart" style="height: 350px;">
-                        <canvas id="barChart1"></canvas>
-                    </div>
-                </div>
-            </div>
+    <!--List of highlights-->
+    <div class="highlight-section">
+        <div class="highlight-title">
+            Highlight
         </div>
-
+        <div class="row g-0">
+            @foreach ($highlights as $highlight)
+            @php
+            $lang = App::getLocale();
+            $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
+            @endphp
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card highlight-card">
+                    <a href="{{ route('highlight.show', $highlight->id) }}">
+                        <img src="{{ asset($imagePath) }}" class="highlight-img card-img-top" alt="{{ $highlight->title }}">
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
-    <br>
-
-    <div class="container mt-3">
-
-        <div class="row text-center">
-            <div class="col">
-                <div class="count" id='all'>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="count" id='scopus'>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="count" id='wos'>
-
-                </div>
-            </div>
-            <div class="col">
-                <div class="count" id='tci'>
-
+</div>
+<!-- Modal -->
+<div class="container card-cart d-sm-flex justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="chart" style="height: 350px;">
+                    <canvas id="barChart1"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal" id="myModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ trans('message.reference') }} (APA)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="name">
-                    <!-- <p>Modal body text goes here.</p> -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('message.close') }}</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
+</div>
+<br>
+
+<div class="container mt-3">
+
+    <div class="row text-center">
+        <div class="col">
+            <div class="count" id='all'>
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="count" id='scopus'>
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="count" id='wos'>
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="count" id='tci'>
+
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ trans('message.reference') }} (APA)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="name">
+                <!-- <p>Modal body text goes here.</p> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('message.close') }}</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
-    <div class="container mixpaper pb-10 mt-3">
-        <h3>{{ trans('message.publications') }}</h3>
-        @foreach($papers as $n => $pe)
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
-                        @if (!$loop->last)
-                        @if (app()->getLocale() == 'en')
-                        {{$n}}
-                        @else
-                        {{$n+543}}
-                        @endif
-                        @else
-                        @if (app()->getLocale() == 'en')
-                        {{ trans('message.before') }} {{$n}}
-                        @else
-                        {{ trans('message.before') }} {{$n+543}}
-                        @endif
-                        @endif
+<div class="container mixpaper pb-10 mt-3">
+    <h3>{{ trans('message.publications') }}</h3>
+    @foreach($papers as $n => $pe)
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$n}}" aria-expanded="true" aria-controls="collapseOne">
+                    @if (!$loop->last)
+                    @if (app()->getLocale() == 'en')
+                    {{$n}}
+                    @else
+                    {{$n+543}}
+                    @endif
+                    @else
+                    @if (app()->getLocale() == 'en')
+                    {{ trans('message.before') }} {{$n}}
+                    @else
+                    {{ trans('message.before') }} {{$n+543}}
+                    @endif
+                    @endif
 
-                    </button>
-                </h2>
-                <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        @foreach($pe as $n => $p)
-                        <div class="row mt-2 mb-3 border-bottom">
-                            <div id="number" class="col-sm-1">
-                                <h6>[{{$n+1}}]</h6>
-                            </div>
-                            <div id="paper2" class="col-sm-11">
-                                <p class="hidden">
-                                    <b>{{$p['paper_name']}}</b> (
-                                    <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
-                                    {{$p['paper_yearpub']}}.
-                                    <a href="{{$p['paper_url']}} " target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
-                                    <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
+                </button>
+            </h2>
+            <div id="collapse{{$n}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    @foreach($pe as $n => $p)
+                    <div class="row mt-2 mb-3 border-bottom">
+                        <div id="number" class="col-sm-1">
+                            <h6>[{{$n+1}}]</h6>
+                        </div>
+                        <div id="paper2" class="col-sm-11">
+                            <p class="hidden">
+                                <b>{{$p['paper_name']}}</b> (
+                                <link>{{$p['author']}}</link>), {{$p['paper_sourcetitle']}}, {{$p['paper_volume']}},
+                                {{$p['paper_yearpub']}}.
+                                <a href="{{$p['paper_url']}} " target="_blank">[url]</a> <a href="https://doi.org/{{$p['paper_doi']}}" target="_blank">[doi]</a>
+                                <!-- <a href="{{ route('bibtex',['id'=>$p['id']])}}">
                                         [อ้างอิง]
                                     </a> -->
-                                    <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
-                                </p>
-                            </div>
+                                <button style="padding: 0;" class="btn btn-link open_modal" value="{{$p['id']}}">[{{ trans('message.refer') }}]</button>
+                            </p>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
-
             </div>
 
         </div>
-        @endforeach
+
     </div>
+    @endforeach
+</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
