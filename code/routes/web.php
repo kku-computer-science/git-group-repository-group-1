@@ -71,10 +71,6 @@ use App\Http\Controllers\TagController;
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
     Auth::routes();
-<<<<<<< HEAD
-
-=======
->>>>>>> 33c9db6f18885aa3cdd002061a51e36bf356a4f5
 });
 
 
@@ -99,10 +95,6 @@ Route::get('/export', [ExportPaperController::class, 'exportUsers'])->name('expo
 Route::get('bib/{id}', [BibtexController::class, 'getbib'])->name('bibtex');
 //สำหรับแสดงรายละเอียด highlight
 Route::get('/highlight/{id}', [HighlightController::class, 'show'])->name('highlight.show');
-<<<<<<< HEAD
-=======
-
->>>>>>> 33c9db6f18885aa3cdd002061a51e36bf356a4f5
 //Route::get('bib/{id}', [BibtexController::class, 'index'])->name('bibtex');
 //Route::get('change/lang', [LocalizationController::class,'lang_change'])->name('LangChange');
 

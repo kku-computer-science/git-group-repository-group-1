@@ -50,4 +50,3 @@ Delete Tag Of Highlight
     Delete Tag
     Sleep    3s
     Close Browser Session
-    
