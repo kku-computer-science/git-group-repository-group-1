@@ -4,6 +4,7 @@ Library    Collections
 
 *** Variables ***
 ${BROWSER}          Chrome
+${URL_HOME}         http://127.0.0.1:8000
 ${URL_LOGIN}        http://127.0.0.1:8000/login
 ${USERNAME}         staff@gmail.com
 ${PASSWORD}         123456789
@@ -27,6 +28,10 @@ ${PRIORITY_NEW}     2
 
 
 *** Keywords ***
+Open Browser
+    Open Browser    ${URL_HOME}    ${BROWSER}
+    Maximize Browser Window
+
 Open Login Page And Login
     Open Browser    ${URL_LOGIN}    ${BROWSER}
     Maximize Browser Window
