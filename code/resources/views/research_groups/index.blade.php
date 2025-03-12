@@ -14,28 +14,28 @@
         <div class="card-body">
             <h4 class="card-title">กลุ่มวิจัย</h4>
             <a class="btn btn-primary btn-menu btn-icon-text btn-sm mb-3" href="{{ route('researchGroups.create') }}"><i
-<<<<<<< HEAD
+
                     class="mdi mdi-plus btn-icon-prepend"></i> ADD</a>
-=======
+
                     class="mdi mdi-plus btn-icon-prepend"></i>{{ trans('message.add') }}</a>
->>>>>>> main
+
             <!-- <div class="table-responsive"> -->
                 <table id ="example1" class="table table-striped">
                     <thead>
                         <tr>
-<<<<<<< HEAD
+
                             <th>No.</th>
                             <th>Group name (ไทย)</th>
                             <th>Head</th>
                             <th>Member</th>
                             <th width="280px">Action</th>
-=======
+
                             <th>{{ trans('message.no') }}</th>
                             <th>{{ trans('message.groupName') }} (ไทย)</th>
                             <th>{{ trans('message.head') }}</th>
                             <th>{{ trans('message.member') }}</th>
                             <th width="280px">{{ trans('message.action') }}</th>
->>>>>>> main
+
                         </tr>
                     </thead>
                     

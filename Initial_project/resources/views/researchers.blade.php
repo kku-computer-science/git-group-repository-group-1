@@ -1,42 +1,38 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container card-2">
-<<<<<<< HEAD:InitialProject/Project_2-master/resources/views/researchers.blade.php
-<<<<<<< HEAD
+
+
     <p class="title"> Researchers </p>
     @foreach($request as $res)
     <span>
         <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_en}}
-=======
+
     <p class="title"> {{ trans('message.Researchers') }} </p>
-=======
+
     <p class="title"> Researchers </p>
->>>>>>> main:Initial_project/resources/views/researchers.blade.php
     @foreach($request as $res)
     <span>
         <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_en}}
-<<<<<<< HEAD:InitialProject/Project_2-master/resources/views/researchers.blade.php
+
         @else
         <ion-icon name="caret-forward-outline" size="small"></ion-icon> {{$res->program_name_th}}
         @endif
->>>>>>> main
-=======
->>>>>>> main:Initial_project/resources/views/researchers.blade.php
+
+
     </span>
     <div class="d-flex">
         <div class="ml-auto">
             <form class="row row-cols-lg-auto g-3" method="GET" action="{{ route('searchresearchers',['id'=>$res->id])}}">
                 <div class="col-md-8">
                     <div class="input-group">
-<<<<<<< HEAD:InitialProject/Project_2-master/resources/views/researchers.blade.php
-<<<<<<< HEAD
+
                         <input type="text" class="form-control" name="textsearch" placeholder="Research interests">
-=======
+
                         <input type="text" class="form-control" name="textsearch" placeholder={{ trans('message.researchInterest') }}>
->>>>>>> main
-=======
+
                         <input type="text" class="form-control" name="textsearch" placeholder="Research interests">
->>>>>>> main:Initial_project/resources/views/researchers.blade.php
+
                     </div>
                 </div>
                 <!-- <div class="col-12">
@@ -49,15 +45,14 @@
                         </select>
                     </div> -->
                 <div class="col-md-4">
-<<<<<<< HEAD:InitialProject/Project_2-master/resources/views/researchers.blade.php
-<<<<<<< HEAD
+
+
                     <button type="submit" class="btn btn-outline-primary">Search</button>
-=======
+
                     <button type="submit" class="btn btn-outline-primary"> {{ trans('message.search') }}</button>
->>>>>>> main
-=======
+
                     <button type="submit" class="btn btn-outline-primary">Search</button>
->>>>>>> main:Initial_project/resources/views/researchers.blade.php
+
                 </div>
             </form>
         </div>

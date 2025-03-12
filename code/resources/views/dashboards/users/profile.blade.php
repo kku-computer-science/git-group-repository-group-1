@@ -28,47 +28,27 @@
                     </div>
                     <h4 class="text-center p-2">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h4>
                     <input type="file" name="admin_image" id="admin_image" style="opacity: 0;height:1px;display:none">
-<<<<<<< HEAD
-                    <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>Change picture</b></a>
-=======
                     <a href="javascript:void(0)" class="btn btn-primary btn-block btn-sm" id="change_picture_btn"><b>{{ trans('message.changePicture') }}</b></a>
->>>>>>> main
                 </div>
 
             </div>
             <div class="nav flex-column nav-pills-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link " id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
                     <i class="mdi mdi-account-card-details"></i>
-<<<<<<< HEAD
-                    <span class="menu-title"> Account </span>
-                </a>
-                <a class="nav-link " id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
-                    <i class="mdi mdi-key-variant"></i>
-                    <span class="menu-title"> Password </span>
-=======
                     <span class="menu-title"> {{ trans('message.account') }} </span>
                 </a>
                 <a class="nav-link " id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                     <i class="mdi mdi-key-variant"></i>
                     <span class="menu-title"> {{ trans('message.password') }} </span>
->>>>>>> main
                 </a>
                 @if(Auth::user()->hasRole('teacher'))
                 <a class="nav-link {{old('tab') == 'expertise' ? ' active' : null}}" id="expertise-tab" data-toggle="pill" href="#expertise" role="tab" aria-controls="expertise" aria-selected="false">
                     <i class="mdi mdi-account-star"></i>
-<<<<<<< HEAD
-                    <span class="menu-title"> Expertise </span>
-                </a>
-                <a class="nav-link" id="education-tab" data-toggle="pill" href="#education" role="tab" aria-controls="education" aria-selected="false">
-                    <i class="mdi mdi-school"></i>
-                    <span class="menu-title"> Education </span>
-=======
                     <span class="menu-title"> {{ trans('message.expertise') }} </span>
                 </a>
                 <a class="nav-link" id="education-tab" data-toggle="pill" href="#education" role="tab" aria-controls="education" aria-selected="false">
                     <i class="mdi mdi-school"></i>
                     <span class="menu-title"> {{ trans('message.education') }} </span>
->>>>>>> main
                 </a>
                 @endif
             </div>
@@ -76,20 +56,16 @@
         <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
             <!-- <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab"> -->
             <div class="tab-pane " id="account" role="tabpanel" aria-labelledby="account-tab">
-<<<<<<< HEAD
-                <h3 class="mb-4">Profile Settings</h3>
-=======
                 <h3 class="mb-4">{{ trans('message.profileSetting') }}</h3>
->>>>>>> main
                 <form class="form-horizontal" method="POST" action="{{ route('adminUpdateInfo') }}" id="AdminInfoForm">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group col-sm-4">
-<<<<<<< HEAD
+
                                 <label>Name title</label>
-=======
+
                                 <label>{{ trans('message.nameTitle') }}</label>
->>>>>>> main
+
                                 <select class="custom-select my-select " name="title_name_en">
                                     <option value="Mr." {{ Auth::user()->title_name_en == 'Mr.' ? 'selected' : '' }}>Mr.</option>
                                     <option value="Miss" {{ Auth::user()->title_name_en == 'Miss' ? 'selected' : '' }}>Miss</option>
@@ -176,11 +152,11 @@
                         @endif
                     </div>
                     <div>
-<<<<<<< HEAD
+
                         <button type="submit" class="btn btn-primary">Update</button>
-=======
+
                         <button type="submit" class="btn btn-primary">{{  trans('message.update' )}}</button>
->>>>>>> main
+
                     </div>
                 </form>
             </div>
@@ -188,21 +164,21 @@
 
             <div class="tab-pane fade " id="password" role="tabpanel" aria-labelledby="password-tab">
                 <form class="form-horizontal" action="{{ route('adminChangePassword') }}" method="POST" id="changePasswordAdminForm">
-<<<<<<< HEAD
+
                     <h3 class="mb-4">Password Settings</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Old password</label>
                                 <input type="password" class="form-control" id="inputpassword" placeholder="Enter current password" name="oldpassword">
-=======
+
                     <h3 class="mb-4">{{ trans('message.passwordSetting') }}</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>{{ trans('message.oldPassword') }}</label>
                                 <input type="password" class="form-control" id="inputpassword" placeholder="{{ trans('message.enterCurrentPassword') }}" name="oldpassword">
->>>>>>> main
+
                                 <span class="text-danger error-text oldpassword_error"></span>
                             </div>
                         </div>
@@ -210,35 +186,35 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-<<<<<<< HEAD
+
                                 <label>New password</label>
                                 <input type="password" class="form-control" id="newpassword" placeholder="Enter new password" name="newpassword">
-=======
+
                                 <label>{{ trans('message.newPassword') }}</label>
                                 <input type="password" class="form-control" id="newpassword" placeholder="{{ trans('message.enterNewPassword') }}" name="newpassword">
->>>>>>> main
+
                                 <span class="text-danger error-text newpassword_error"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-<<<<<<< HEAD
+
                                 <label>Confirm new password</label>
                                 <input type="password" class="form-control" id="cnewpassword" placeholder="ReEnter new password" name="cnewpassword">
-=======
+
                                 <label>{{ trans('message.confirmNewPassword') }}</label>
                                 <input type="password" class="form-control" id="cnewpassword" placeholder="{{ trans('message.reEnterNewPassword') }}" name="cnewpassword">
->>>>>>> main
+
                                 <span class="text-danger error-text cnewpassword_error"></span>
                             </div>
                         </div>
                     </div>
                     <div>
-<<<<<<< HEAD
+
                         <button class="btn btn-primary">Update!!</button>
-=======
+
                         <button class="btn btn-primary">{{ trans('message.update') }}</button>
->>>>>>> main
+
                         <!-- <button class="btn btn-light">Cancel</button> -->
                     </div>
 

@@ -10,10 +10,7 @@ use Bibtex;
 use RenanBr\BibTexParser\Listener;
 use RenanBr\BibTexParser\Parser;
 use RenanBr\BibTexParser\Processor;
-<<<<<<< HEAD
-=======
 use App\Models\Highlight;
->>>>>>> main
 
 class HomeController extends Controller
 {
@@ -183,16 +180,16 @@ class HomeController extends Controller
 
         //$key="watchara";
         //return response()->json($bb);
-<<<<<<< HEAD
+
         return view('home', compact('papers'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
-=======
+
         //Highlights
         // Fetch active highlights sorted by priority
         $highlights = Highlight::orderBy('priority', 'asc')->get();
 
 
         return view('home', compact('papers', 'highlights'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))
->>>>>>> main
+
             ->with('paper_tci', json_encode($paper_tci, JSON_NUMERIC_CHECK))
             ->with('paper_scopus', json_encode($paper_scopus, JSON_NUMERIC_CHECK))
             ->with('paper_wos', json_encode($paper_wos, JSON_NUMERIC_CHECK))
@@ -205,8 +202,7 @@ class HomeController extends Controller
         // return $papers;
         // (DB::raw('YEAR(paper_yearpub)')
         //return view('home',compact('papers'));
-<<<<<<< HEAD
-=======
+
         
         //Highlights
         // Fetch active highlights sorted by priority
@@ -229,7 +225,7 @@ class HomeController extends Controller
             ->with('paper_tci_numall', json_encode($paper_tci_numall, JSON_NUMERIC_CHECK))
             ->with('paper_scopus_numall', json_encode($paper_scopus_numall, JSON_NUMERIC_CHECK))
             ->with('paper_wos_numall', json_encode($paper_wos_numall, JSON_NUMERIC_CHECK));
->>>>>>> main
+
     }
 
     public function getnum()
@@ -248,11 +244,11 @@ class HomeController extends Controller
 
         //return $paper_tci;
 
-<<<<<<< HEAD
 
-=======
+
+
 //
->>>>>>> main
+
         $paper_wos = Paper::whereHas('source', function ($query) {
             return $query->where('source_data_id', '=', 2);
         })->whereIn('paper_type', ['Conference Proceeding', 'Journal'])->count();
