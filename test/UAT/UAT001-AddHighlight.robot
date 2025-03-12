@@ -40,3 +40,14 @@ Add New Highlight Close Exist Tag
     Sleep    3s
     Verify Highlight Added
     Close Browser Session
+
+Delete Tag Of Highlight
+    Open Login Page And Login
+    Sleep    3s
+    Click Manage Highlight Menu
+    Click Add Highlight Button
+    Sleep    3s
+    Delete Tag
+    Sleep    3s
+    Close Browser Session
+    

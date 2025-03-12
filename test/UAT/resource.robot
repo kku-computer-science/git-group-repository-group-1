@@ -36,6 +36,24 @@ Click Manage Highlight Menu
 Click Add Highlight Button
     Click Element    xpath=//a[contains(@class, 'btn-primary') and .//i[contains(@class, 'mdi-plus')]]
 
+Delete Tag
+    Click Button    xpath=//button[contains(text(),'Add Tag')]
+    Sleep    3s
+    Click Element    xpath=//button[normalize-space()='Manage Tags']
+    Sleep    3s
+    Wait Until Element Is Visible    xpath=//tr[td[contains(text(),'${NEW_TAG}')]]//button[contains(@class,'delete-tag')]    5s
+    Scroll Element Into View    xpath=//tr[td[contains(text(),'${NEW_TAG}')]]//button[contains(@class,'delete-tag')]
+    Click Element    xpath=//tr[td[contains(text(),'${NEW_TAG}')]]//button[contains(@class,'delete-tag')]
+    Sleep    2s
+    Handle Alert    ACCEPT
+    Sleep    2s
+    Wait Until Element Is Visible    xpath=//tr[td[contains(text(),'${NEW_TAG2}')]]//button[contains(@class,'delete-tag')]    5s
+    Scroll Element Into View    xpath=//tr[td[contains(text(),'${NEW_TAG2}')]]//button[contains(@class,'delete-tag')]
+    Click Element    xpath=//tr[td[contains(text(),'${NEW_TAG2}')]]//button[contains(@class,'delete-tag')]
+    Sleep    2s
+    Handle Alert    ACCEPT
+    Sleep    2s
+
 Fill Highlight Form
     Input Text    name=title_en    ${TITLE_EN}
     Input Text    name=title_th    ${TITLE_TH}
@@ -48,8 +66,8 @@ Fill Highlight Form
 Add Tags
     Click Button    xpath=//button[contains(text(),'Add Tag')]
     Wait Until Element Is Visible    xpath=//h5[contains(text(),'Select Tags')]    5s
-    Wait Until Element Is Visible    xpath=//button[contains(text(),'kku')]    5s
-    Click Element    xpath=//button[contains(text(),'kku')]
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'KKU')]    5s
+    Click Element    xpath=//button[contains(text(),'KKU')]
     Click Element    xpath=//button[contains(text(),'researcher')]
     Click Element    xpath=//button[contains(text(),'CS')]
     Wait Until Element Is Visible    id=newTagName    5s
