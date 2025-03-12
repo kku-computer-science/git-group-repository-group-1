@@ -126,18 +126,29 @@ class HighlightController extends Controller
     }
 
     //ลบข้อมูลและรูปภาพ
-    public function destroy(Highlight $highlight)
+    public function destroy($id)
     {
-        // ลบรูปภาพจาก storage
-        if ($highlight->image_url_en) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_en));
+        try {
+            $highlight = Highlight::findOrFail($id);
+    
+            // ลบรูปภาพออกจาก storage
+            if ($highlight->image_url_en) {
+                Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_en));
+            }
+            if ($highlight->image_url_th) {
+                Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_th));
+            }
+    
+            // ลบแท็กที่เชื่อมโยงกับ Highlight
+            $highlight->tags()->detach();
+    
+            // ลบ Highlight ออกจาก Database
+            $highlight->delete();
+    
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
-        if ($highlight->image_url_th) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_th));
-        }
-        //ลบข้อมูลจาก database
-        $highlight->delete();
-
-        return redirect()->route('highlights.index')->with('success', 'Highlight deleted successfully.');
     }
+    
 }

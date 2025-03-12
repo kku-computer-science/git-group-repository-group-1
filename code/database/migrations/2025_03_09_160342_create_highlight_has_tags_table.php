@@ -19,11 +19,16 @@ class CreateHighlightHasTagsTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      */
     public function down()
     {
         Schema::dropIfExists('highlight_has_tags');
+        Schema::table('highlight_has_tags', function (Blueprint $table) {
+            $table->dropForeign(['highlight_id']); // ลบ Constraint เดิม
+            $table->foreign('highlight_id')->references('id')->on('highlights')->onDelete('cascade');
+        });
     }
 }
