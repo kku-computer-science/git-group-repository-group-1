@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2025 at 07:17 PM
+-- Generation Time: Mar 12, 2025 at 08:34 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -2449,6 +2449,8 @@ CREATE TABLE `highlights` (
 INSERT INTO `highlights` (`id`, `title_en`, `title_th`, `description_en`, `description_th`, `image_url_en`, `image_url_th`, `priority`, `created_at`, `updated_at`) VALUES
 (10, '1', '1', '1', '1', 'storage/highlights/en/262P9BlWrK0SvE7yRqmCp6XuSLCj7WgCeF30jL7Y.png', 'storage/highlights/th/S5VjfW9Q7IjT70jAiFECsIBBAeLrVCQr80UUrDd7.png', 1, '2025-03-08 17:53:53', '2025-03-12 13:23:59'),
 (11, '2', '2', '2', '2', 'storage/highlights/en/jRVxXkDxuVLviLJN1UZa5ZFoHhfGDRKU0ovKzRMd.jpg', 'storage/highlights/th/eEQW9hFS8XBSyQLAOLU8KfXRGDn9JILOuYwQCwCt.png', 1, '2025-03-08 18:45:25', '2025-03-12 13:43:38'),
+(22, '123', '123', '123', '123', 'storage/highlights/en/ha6LFsx8mF73UE6GKlmOf7Y1zYn5LakSRjBr4HC5.png', 'storage/highlights/th/Q0CRv5WwFOSyH3zJP2CWKflLU8WES4vnUtKhVU07.png', 1, '2025-03-12 13:33:28', '2025-03-12 14:07:54'),
+(26, '876', '876', '876', '876', 'storage/highlights/en/PJ44bCsQmBtQU7zGeBMcJkelQjSklq4XqLVTc4fM.png', 'storage/highlights/th/cxQlDmlK82z0yFSUjFnDStNdJZj0iySwymvFmztf.png', 1, '2025-03-12 18:53:32', '2025-03-12 18:53:32');
 
 -- --------------------------------------------------------
 
@@ -2469,8 +2471,8 @@ INSERT INTO `highlight_has_tags` (`highlight_id`, `tag_id`) VALUES
 (11, 1),
 (10, 28),
 (11, 28),
-(22, 28),
-(24, 28);
+(26, 28),
+(26, 1);
 
 -- --------------------------------------------------------
 
@@ -4356,8 +4358,10 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'kku', NULL, NULL),
-(2, 'banner', '2025-03-12 17:09:02', '2025-03-12 17:09:02');
+(1, 'KKU', NULL, '2025-03-12 19:34:14'),
+(28, 'banner', '2025-03-12 17:09:02', '2025-03-12 17:09:02'),
+(30, 'researcher', '2025-03-12 19:34:21', '2025-03-12 19:34:21'),
+(31, 'CS', '2025-03-12 19:34:24', '2025-03-12 19:34:24');
 
 -- --------------------------------------------------------
 
@@ -5721,7 +5725,7 @@ ALTER TABLE `funds`
 -- AUTO_INCREMENT for table `highlights`
 --
 ALTER TABLE `highlights`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -5787,7 +5791,7 @@ ALTER TABLE `source_papers`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`

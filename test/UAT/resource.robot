@@ -264,9 +264,9 @@ Click First Highlight Banner
     Sleep    2s
 
 Verify Highlight Detail Page
-    Wait Until Page Contains Element    xpath=//h1[contains(@class, 'fw-semibold')]    15s
+    Wait Until Page Contains Element    xpath=//h2[contains(@class, 'fw-semibold')]    15s
     Page Should Contain    ${TITLE_EN}
-    Wait Until Page Contains Element    xpath=//p[contains(@class, 'fs-5')]    10s
+    Wait Until Page Contains Element    xpath=//span[contains(@class, 'fs-5')]    10s
     Page Should Contain    ${DESCRIPTION_EN}
     
 Wait For Page Load
@@ -281,8 +281,8 @@ Click First Tag
     Click Element    xpath=(//a[contains(@href, '/highlight/tag/')])[1]
 
 Verify Highlight List Page
-    Wait Until Page Contains Element    xpath=//h3[contains(text(), 'Highlight สำหรับแท็ก:')]    15s
-    Page Should Contain Element    xpath=//h3[contains(text(), 'Highlight สำหรับแท็ก:')]
+    Wait Until Page Contains Element    xpath=//h3[contains(text(), 'Search results for:')]    15s
+    Page Should Contain Element    xpath=//h3[contains(text(), 'Search results for:')]
     Wait Until Element Is Visible    xpath=//div[contains(@class, 'card highlight-card')]    10s
     Page Should Contain Element    xpath=//div[contains(@class, 'card highlight-card')]
     

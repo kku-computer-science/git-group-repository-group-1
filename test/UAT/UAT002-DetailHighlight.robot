@@ -2,6 +2,22 @@
 Resource    resource.robot
 
 *** Test Cases ***
+Click Banner To Detail And Tag Not Exist
+    Open Browser To Home Page
+    Sleep    2s
+    ${CLICKABLE} =    Run Keyword And Return Status    Element Should Be Clickable    xpath=//div[@class='carousel-item active']//img[contains(@class, 'banner-img')]
+    Run Keyword If    ${CLICKABLE}    Fail    Banner should not be clickable
+    Log    Verified that the banner is not clickable.
+    Close Browser Session
+
+Click Highlight To Detail And Tag Not Exist
+    Open Browser To Home Page
+    Sleep    2s
+    ${HIGHLIGHT_EXIST} =    Run Keyword And Return Status    Element Should Be Visible    xpath=//div[contains(@class, 'highlight-card')]//a
+    Run Keyword If    ${HIGHLIGHT_EXIST}    Fail    Highlight should not be clickable
+    Log    Verified that no highlight is clickable.
+    Close Browser Session
+
 Add New Highlight
     Open Login Page And Login
     Sleep    1s
