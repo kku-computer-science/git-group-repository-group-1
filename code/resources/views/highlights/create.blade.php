@@ -82,7 +82,7 @@
                             @else
                                 <p class="text-muted">No tags available</p>
                             @endif
-
+                            <!--add new tag-->
                             <div class="mt-3">
                                 <input type="text" id="newTagName" class="form-control border rounded" placeholder="Enter new tag">
                                 <button type="button" id="addTempTag" class="btn btn-primary mt-2">Add New Tag</button>
