@@ -19,6 +19,7 @@ ${NEW_TAG}          New_Tag_Test_1
 ${NEW_TAG2}         New_Tag_Test_2
 ${NEW_TAG3}         New_Tag_Test_3
 ${NEW_TAG4}         New_Tag_Test_4
+${TAG_BANNER}       banner
 
 ${TITLE_EN_NEW}     Updated Title EN
 ${TITLE_TH_NEW}     อัปเดตชื่อภาษาไทย
@@ -146,16 +147,44 @@ Fill Highlight Form
     
 Add Tags
     Click Button    xpath=//button[contains(text(),'Add Tag')]
+    Sleep    1s
     Wait Until Element Is Visible    xpath=//h5[contains(text(),'Select Tags')]    5s
     Wait Until Element Is Visible    xpath=//button[contains(text(),'KKU')]    5s
     Click Element    xpath=//button[contains(text(),'KKU')]
+    Sleep    1s
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'researcher')]    5s
     Click Element    xpath=//button[contains(text(),'researcher')]
+    Sleep    1s
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'CS')]    5s
     Click Element    xpath=//button[contains(text(),'CS')]
+    Sleep    1s
+    Click Button    xpath=//button[contains(text(),'Close')]
+    Sleep    2s
+    Wait Until Element Is Not Visible    id=tagModal    5s
+    Sleep    1s
+    
+Add Banner Tags
+    Click Button    xpath=//button[contains(text(), 'Add Tag')]
+    Sleep    1s
+    Wait Until Element Is Visible    xpath=//h5[contains(text(),'Select Tags')]    5s
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'KKU')]    5s
+    Click Element    xpath=//button[contains(text(),'KKU')]
+    Sleep    1s
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'researcher')]    5s
+    Click Element    xpath=//button[contains(text(),'researcher')]
+    Sleep    1s
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'CS')]    5s
+    Click Element    xpath=//button[contains(text(),'CS')]
+    Sleep    1s
     Wait Until Element Is Visible    id=newTagName    5s
-    Input Text    id=newTagName    ${NEW_TAG}
+    Input Text    id=newTagName    ${TAG_BANNER}
+    Sleep    2s
     Click Button    xpath=//button[@id='addTempTag']
     Sleep    2s
     Click Button    xpath=//button[contains(text(),'Close')]
+    Sleep    2s
+    Wait Until Element Is Not Visible    id=tagModal    5s
+    Sleep    1s
 
 Add Exist Tags
     Click Button    xpath=//button[contains(text(),'Add Tag')]
