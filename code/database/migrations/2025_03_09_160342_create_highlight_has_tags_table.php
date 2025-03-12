@@ -19,7 +19,6 @@ class CreateHighlightHasTagsTable extends Migration
         });
     }
 
-    
 
     /**
      * Reverse the migrations.

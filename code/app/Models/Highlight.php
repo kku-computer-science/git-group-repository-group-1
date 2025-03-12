@@ -24,9 +24,6 @@ class Highlight extends Model
         'priority' => 1, //
     ];
 
-    protected $casts = [
-        'tags' => 'array',
-    ];
     
     public function tags()
     {

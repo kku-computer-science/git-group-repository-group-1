@@ -10,15 +10,20 @@ use App\Models\Tag;
 
 class HighlightController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:highlights-list|highlights-create|highlights-edit|highlights-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:highlights-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:highlights-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:highlights-delete', ['only' => ['destroy']]);
+        // ไม่ใส่ middleware สำหรับ show() เพื่อให้ทุกคนเข้าถึงได้
+    }
     public function index()
     {
         $highlights = Highlight::orderBy('priority', 'asc')->get();
         $highlights = Highlight::with('tags')->get();
         return view('highlights.index', compact('highlights'));
     }
-
-
-
     public function create()
     {
         $existingTags = Tag::pluck('name')->toArray();
@@ -27,7 +32,7 @@ class HighlightController extends Controller
         return view('highlights.create', compact('existingTags'));
     }
 
-    
+
     //add Highlight
     //upload image
     public function store(Request $request)
@@ -77,10 +82,10 @@ class HighlightController extends Controller
     {
         $existingTags = Tag::pluck('name')->toArray();
         $highlightTags = $highlight->tags()->pluck('name')->toArray();
-    
+
         return view('highlights.edit', compact('highlight', 'existingTags', 'highlightTags'));
     }
-    
+
 
     //อัปเดต Highlight
     public function update(Request $request, Highlight $highlight)
@@ -146,7 +151,7 @@ class HighlightController extends Controller
     {
         try {
             $highlight = Highlight::findOrFail($id);
-    
+
             // ลบรูปภาพออกจาก storage
             if ($highlight->image_url_en) {
                 Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_en));
@@ -154,17 +159,21 @@ class HighlightController extends Controller
             if ($highlight->image_url_th) {
                 Storage::disk('public')->delete(str_replace('storage/', '', $highlight->image_url_th));
             }
-    
+
             // ลบแท็กที่เชื่อมโยงกับ Highlight
             $highlight->tags()->detach();
-    
+
             // ลบ Highlight ออกจาก Database
             $highlight->delete();
-    
+
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
-    
+    public function show($id)
+    {
+        $highlight = Highlight::with('tags')->findOrFail($id);
+        return view('highlights.show', compact('highlight'));
+    }
 }
