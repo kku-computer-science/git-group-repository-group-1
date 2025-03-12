@@ -23,7 +23,7 @@
 
 3. เมื่อเข้าสู่ระบบแล้ว ผู้ใช้จะอยู่ที่หน้า Dashboard ไปที่ menu manage highlight ที่อยู่มุมซ้ายด้านล่างสุด
 
-**สร้าง Highlight**
+* **สร้าง Highlight**
 1. สร้าง Highlight ใหม่โดยการ Add New Highlight
 
 2. ติดแท็กได้โดยการ Add Tag  
@@ -32,14 +32,14 @@
 
 4. กดบันทึก(Save)เพื่อยืนยันการเพิ่มเนื้อหา 
 
-**แก้ไข Highlight**
+* **แก้ไข Highlight**
 1. แก้ไข Highlight โดยการกดปุ่ม edit
 
 2. สามารแก้ไขคำอธิบาย หัวข้อ Tag และลำดับความสำคัญได้
 
 3. กดบันทึก(Save)เพื่อยืนยันการแก้ไขเนื้อหา 
 
-**ลบ Highlight**
+* **ลบ Highlight**
 1. ลบ Highlight โดยการกดปุ่ม delete
 
 2. จะแสดงแจ้งเตือน Are you sure you want to delete this highlight? ยืนยันความต้องการโดยการกด ok
