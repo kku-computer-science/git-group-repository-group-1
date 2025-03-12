@@ -1,35 +1,40 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container mt-5">
+<div class="container-fluid p-0"> {{-- เปลี่ยนเป็น container-fluid เพื่อลด padding --}}
     @php
     $lang = App::getLocale();
     @endphp
 
-    {{-- รูปภาพ --}}
+    {{-- รูปภาพเต็มแนวยาว --}}
     <div class="d-flex justify-content-center">
         <img src="{{ asset($highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en) }}"
-            class="img-fluid rounded w-100 col-md-8 mb-3"
+            class="img-fluid w-100 vh-50 object-fit-cover"
             alt="{{ $highlight->{"title_{$lang}"} }}">
     </div>
-
-    {{-- วันที่เผยแพร่ --}}
-    <div class="text-muted text-end mb-2">
-        <small>เผยแพร่ {{ optional($highlight->created_at)->format('d/m/Y H:i') }}</small>
-    </div>
-
-    {{-- แสดง Tag ที่เกี่ยวข้อง --}}
-    <div class="mt-3 d-flex align-items-center flex-wrap">
-        <h5 class="fw-bold me-2 mb-0">Tags:</h5>
+    <br>
+    {{-- แสดง Tag และวันที่เผยแพร่ให้อยู่บรรทัดเดียวกัน --}}
+    <div class="container mt-3 d-flex justify-content-between align-items-center flex-wrap">
+        {{-- Tags --}}
+        <div class="d-flex align-items-center flex-wrap">
+            <h5 class="fw-bold me-2 mb-0">Tags:</h5>
             @forelse($highlight->tags as $tag)
-            <span class= "me-2 text-primary text-decoration-none">{{ $tag->name }}</span>
+            <a href="{{ route('highlight.byTag', ['tag_id' => $tag->id]) }}" class="me-2 text-primary text-decoration-none">
+                {{ $tag->name }}
+            </a>
             @empty
             <span class="text-muted">ไม่มีแท็ก</span>
             @endforelse
+        </div>
+
+        {{-- วันที่เผยแพร่ --}}
+        <div class="text-muted">
+            <small>เผยแพร่ {{ optional($highlight->created_at)->format('d/m/Y H:i') }}</small>
+        </div>
     </div>
 
     {{-- หัวข้อ --}}
-    <div class="text-center">
+    <div class="text-center mt-4">
         <h1 class="fw-semibold">{{ $highlight->{"title_{$lang}"} }}</h1>
     </div>
 
@@ -39,8 +44,8 @@
     </div>
 
     {{-- วันที่อัปเดตล่าสุด --}}
-    <div class="text-muted text-end mt-3">
-        <small>อัปเดตล่าสุด {{ optional($highlight->updated_at)->format('d/m/Y H:i') }}</small>
+    <div class="container text-end mt-3">
+        <small class="text-muted">อัปเดตล่าสุด {{ optional($highlight->updated_at)->format('d/m/Y H:i') }}</small>
     </div>
 </div>
 @endsection

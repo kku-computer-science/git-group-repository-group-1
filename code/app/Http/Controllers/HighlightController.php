@@ -65,12 +65,12 @@ class HighlightController extends Controller
         //เชื่อมโยงแท็ก (Tags) กับ Highlight 
         $tags = $request->input('tags', []);
         $tagIds = [];
-        
+
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
             $tagIds[] = $tag->id;
         }
-        
+
         //เชื่อมโยงแท็กกับ Highlight โดยใช้ sync()
         $highlight->tags()->sync($tagIds);
 
@@ -134,7 +134,7 @@ class HighlightController extends Controller
 
         //เชื่อมโยงแท็ก (Tags) กับ Highlight 
         $tags = $request->input('tags', []);
-        $tagIds = []; 
+        $tagIds = [];
 
         foreach ($tags as $tagName) {
             $tag = Tag::firstOrCreate(['name' => $tagName]);
@@ -175,5 +175,14 @@ class HighlightController extends Controller
     {
         $highlight = Highlight::with('tags')->findOrFail($id);
         return view('highlights.show', compact('highlight'));
+    }
+    public function showByTag($tag_id)
+    {
+        $tag = Tag::findOrFail($tag_id); // เปลี่ยนจาก $tags เป็น $tag
+        $highlights = Highlight::whereHas('tags', function ($query) use ($tag_id) {
+            $query->where('tags.id', $tag_id);
+        })->get();
+
+        return view('highlights.tag', compact('highlights', 'tag')); // แก้ชื่อเป็น highlights, tag
     }
 }
