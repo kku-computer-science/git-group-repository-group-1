@@ -17,6 +17,7 @@ ${IMAGE_TH}         ${CURDIR}/test_image_th.jpg
 ${PRIORITY}         1
 ${NEW_TAG}          New_Tag_Test_1
 ${NEW_TAG2}         New_Tag_Test_2
+${NEW_TAG3}         New_Tag_Test_3
 
 ${TITLE_EN_NEW}     Updated Title EN
 ${TITLE_TH_NEW}     อัปเดตชื่อภาษาไทย
@@ -56,6 +57,24 @@ Click Update Button
     Sleep    1s
     Click Button    xpath=//button[contains(text(),'Update')]
 
+Click Add Tag Button
+    Click Button    xpath=//button[contains(text(),'Add Tag')]
+    
+Click Manage Tags Button
+    Wait Until Element Is Visible    xpath=//button[normalize-space()='Manage Tags']    5s
+    Scroll Element Into View    xpath=//button[normalize-space()='Manage Tags']
+    Click Element    xpath=//button[normalize-space()='Manage Tags']
+
+Add New Tag
+    Wait Until Element Is Visible    id=newTagName    5s
+    Input Text    id=newTagName    ${NEW_TAG3}
+    Sleep    1s
+    Click Button    id=addTag
+    Sleep    2s
+
+Verify Tag Added
+    Page Should Contain    ${NEW_TAG3}
+
 Delete Tag
     Click Button    xpath=//button[contains(text(),'Add Tag')]
     Sleep    3s
@@ -73,6 +92,32 @@ Delete Tag
     Sleep    2s
     Handle Alert    ACCEPT
     Sleep    2s
+    Wait Until Element Is Visible    xpath=//tr[td[contains(text(),'${NEW_TAG3}')]]//button[contains(@class,'delete-tag')]    5s
+    Scroll Element Into View    xpath=//tr[td[contains(text(),'${NEW_TAG3}')]]//button[contains(@class,'delete-tag')]
+    Click Element    xpath=//tr[td[contains(text(),'${NEW_TAG3}')]]//button[contains(@class,'delete-tag')]
+    Sleep    2s
+    Handle Alert    ACCEPT
+    Sleep    2s
+
+Click Delete Highlight Button
+    Wait Until Element Is Visible    xpath=(//button[contains(@class,'delete-btn')])[1]    5s
+    Scroll Element Into View    xpath=(//button[contains(@class,'delete-btn')])[1]
+    Sleep    1s
+    Click Element    xpath=(//button[contains(@class,'delete-btn')])[1]
+    Handle Alert    ACCEPT
+    
+Click Delete Multiple Highlights
+    [Arguments]    ${COUNT}
+    FOR    ${INDEX}    IN RANGE    ${COUNT}
+        Wait Until Element Is Visible    xpath=(//button[contains(@class,'delete-btn')])[1]    5s
+        Scroll Element Into View    xpath=(//button[contains(@class,'delete-btn')])[1]
+        Sleep    1s
+        Click Element    xpath=(//button[contains(@class,'delete-btn')])[1]
+        ${ALERT_PRESENT} =    Run Keyword And Return Status    Alert Should Be Present
+        Run Keyword If    ${ALERT_PRESENT}    Handle Alert    ACCEPT
+        Sleep    1s
+        Sleep    2s
+    END
 
 Fill Highlight Form
     Input Text    name=title_en    ${TITLE_EN}
@@ -153,9 +198,10 @@ Fill Edit Highlight Form
 Remove One Tag In Edit Form
     Sleep    2s
     Wait Until Element Is Visible    xpath=//div[@id='selected-tags']//span[contains(@class,'remove-tag')]    5s
+    Scroll Element Into View    xpath=(//div[@id='selected-tags']//span[contains(@class,'remove-tag')])[1]
+    Sleep    1s
     Click Element    xpath=(//div[@id='selected-tags']//span[contains(@class,'remove-tag')])[1]
     Sleep    1s
-    
 
 Close Browser Session
     SeleniumLibrary.Close Browser

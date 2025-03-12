@@ -53,13 +53,25 @@ Edit Highlight
     Sleep    2s
     Close Browser Session
     
-Delete Highlight
+Delete Three Highlights
     Open Login Page And Login
     Sleep    3s
     Click Manage Highlight Menu
     Sleep    3s
-    Delete Highlight
+    Click Delete Multiple Highlights    3
     Sleep    2s
+    Close Browser Session
+    
+Add Tag In Manage Tag
+    Open Login Page And Login
+    Sleep    3s
+    Click Manage Highlight Menu
+    Click Add Highlight Button
+    Sleep    3s
+    Click Add Tag Button
+    Click Manage Tags Button
+    Add New Tag
+    Verify Tag Added
     Close Browser Session
 
 Delete Tag Of Highlight
