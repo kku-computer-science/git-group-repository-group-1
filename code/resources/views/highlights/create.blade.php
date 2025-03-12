@@ -82,10 +82,10 @@
                             @else
                                 <p class="text-muted">No tags available</p>
                             @endif
-
+                            <!--add new tag-->
                             <div class="mt-3">
                                 <input type="text" id="newTagName" class="form-control border rounded" placeholder="Enter new tag">
-                                <button type="button" id="addNewTag" class="btn btn-primary mt-2">Add New Tag</button>
+                                <button type="button" id="addTempTag" class="btn btn-primary mt-2">Add New Tag</button>
                             </div>
                         </div>
                         <div class="modal-header">
@@ -105,6 +105,24 @@ $(document).ready(function() {
     // เลือกแท็กจากรายการที่มีอยู่
     $('.tag-option').click(function() {
         var tag = $(this).text().trim();
+        addTagToForm(tag);
+        $('#tagModal').modal('hide');
+    });
+
+    // เพิ่มแท็กใหม่แต่ยังไม่บันทึกลง Database
+    $('#addTempTag').click(function() {
+        let tagName = $('#newTagName').val().trim();
+        if (tagName === '') {
+            alert('Please enter a tag name.');
+            return;
+        }
+        
+        addTagToForm(tagName);
+        $('#newTagName').val('');
+    });
+
+    // ฟังก์ชันเพิ่มแท็กเข้า Form
+    function addTagToForm(tag) {
         if ($('#selected-tags input[value="'+tag+'"]').length == 0) {
             $('#selected-tags').append(`
                 <span class="badge badge-primary m-1">${tag}
@@ -113,47 +131,14 @@ $(document).ready(function() {
                 </span>
             `);
         }
-        $('#tagModal').modal('hide');
-    });
-
-    // เพิ่มแท็กใหม่ลงใน Database
-    $('#addNewTag').click(function() {
-        let tagName = $('#newTagName').val().trim();
-        if (tagName === '') {
-            alert('Please enter a tag name.');
-            return;
-        }
-
-        $.ajax({
-            url: "{{ route('tags.store') }}",
-            method: "POST",
-            data: {
-                name: tagName,
-                _token: "{{ csrf_token() }}"
-            },
-            success: function(response) {
-                if (response.success) {
-                    $('#selected-tags').append(`
-                        <span class="badge badge-primary m-1">${response.tag.name}
-                            <span class="remove-tag" style="cursor:pointer">&times;</span>
-                            <input type="hidden" name="tags[]" value="${response.tag.id}">
-                        </span>
-                    `);
-                    $('#newTagName').val('');
-                }
-            },
-            error: function(xhr) {
-                alert('Error adding tag. Check console for details.');
-                console.error(xhr.responseText);
-            }
-        });
-    });
+    }
 
     // ลบแท็กที่เลือก
     $(document).on('click', '.remove-tag', function(){
         $(this).parent('.badge').remove();
     });
 });
+
 </script>
 
 @endsection

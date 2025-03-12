@@ -53,14 +53,41 @@
         height: 300px;
         object-fit: cover;
     }
+
+    .banner-img {
+        width: 250%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .background-img {
+        background-image: url("{{ asset('https://api.computing.kku.ac.th//storage/images/1661921029-3.png') }}");
+        background-position: center center;
+        background-size: cover;
+        padding: 15px;
+        margin: 0px;
+    }
+
 </style>
 @section('content')
 <!--highlight-->
+@php
+// กรองเฉพาะภาพที่มี tag "banner" สำหรับสไลด์
+$bannerHighlights = $highlights->filter(fn($highlight) => 
+    $highlight->tags && $highlight->tags->contains('name', 'banner')
+);
+
+// กรองเฉพาะภาพที่ไม่มี tag "banner" สำหรับรายการ highlight
+$filteredHighlights = $highlights->reject(fn($highlight) => 
+    $highlight->tags && $highlight->tags->contains('name', 'banner')
+);
+@endphp
+
 <div class="container home">
     <div class="container d-sm-flex justify-content-center mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                @foreach ($highlights as $index => $highlight)
+            <div class="carousel-indicators justify-content-center">
+                @foreach ($bannerHighlights as $index => $highlight)
                 <button type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide-to="{{ $index }}"
                     class="{{ $index == 0 ? 'active' : '' }}"
@@ -69,24 +96,26 @@
                 @endforeach
             </div>
 
-            <!--Highlight image-->
+            <!-- Highlight image -->
             <div class="carousel-inner">
-                @forelse ($highlights as $index => $highlight)
+                @forelse ($bannerHighlights as $index => $highlight)
                 @php
                 $lang = App::getLocale();
                 $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
                 @endphp
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                     <a href="{{ route('highlight.show', $highlight->id) }}">
-                        <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="{{ $highlight->title }}">
+                        <img src="{{ asset($imagePath) }}" class="banner-img d-block w-100" alt="{{ $highlight->title }}">
+                    </a>
                 </div>
                 @empty
-                <!-- Default image if no highlights exist -->
+                <!-- Default image if no banners exist -->
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/Banner1.png') }}" class="d-block w-100" alt="Default Image">
+                    <img src="{{ asset('img/Banner1.png') }}" class="banner-img d-block w-100" alt="Default Image">
                 </div>
                 @endforelse
             </div>
+
             <!-- Previous / Next Buttons -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -98,13 +127,14 @@
             </button>
         </div>
     </div>
-    <!--List of highlights-->
-    <div class="highlight-section">
-        <div class="highlight-title">
+
+    <!-- List of highlights -->
+    <div class="highlight-section mt-5">
+        <div class="background-img highlight-title">
             Highlight
         </div>
         <div class="row g-0">
-            @foreach ($highlights as $highlight)
+            @foreach ($filteredHighlights as $highlight)
             @php
             $lang = App::getLocale();
             $imagePath = $highlight->{"image_url_{$lang}"} ?? $highlight->image_url_en;
@@ -120,7 +150,6 @@
         </div>
     </div>
 </div>
-<br>
 <!-- Modal -->
 <div class="container card-cart d-sm-flex justify-content-center mt-5">
     <div class="col-md-8">
