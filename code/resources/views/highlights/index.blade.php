@@ -62,6 +62,7 @@
                                 </a>
 
                                 <!-- Delete Button with Modal -->
+                                <!-- ปุ่มลบ -->
                                 <button class="btn btn-outline-danger btn-sm delete-btn" data-id="{{ $highlight->id }}">
                                     <i class="mdi mdi-delete"></i>
                                 </button>
@@ -100,25 +101,46 @@
     </div>
 </div>
 
-<!-- jQuery & DataTables -->
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<!-- jQuery (ต้องมาก่อน DataTables) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables CSS & JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap4.min.css">
 <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#highlightsTable').DataTable({
-            "pageLength": 10
-        });
+$(document).ready(function() {
+    // เมื่อกดปุ่มลบ
+    $('.delete-btn').click(function() {
+        let highlightId = $(this).data('id');
 
-        // Delete Confirmation Modal
-        $('.delete-btn').click(function() {
-            let id = $(this).data('id');
-            let action = "{{ url('highlights') }}/" + id;
-            $('#deleteForm').attr('action', action);
-            $('#deleteModal').modal('show');
-        });
+        if (confirm("Are you sure you want to delete this highlight?")) {
+            $.ajax({
+                url: "/highlights/" + highlightId,
+                method: "POST",
+                data: {
+                    _method: "DELETE",
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert("Highlight deleted successfully!");
+                        location.reload(); // รีเฟรชหน้า
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                },
+                error: function(xhr) {
+                    alert("Failed to delete highlight. Please try again.");
+                    console.error(xhr.responseText);
+                }
+            });
+        }
     });
+});
+
+
 </script>
 
 @endsection

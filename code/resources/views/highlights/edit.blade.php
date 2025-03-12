@@ -83,6 +83,10 @@
                         <div class="modal-header">
                             <h5 class="modal-title">Select Tags</h5>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <!--tag manage-->
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='{{ route('tags.manage') }}'" style="position: absolute; right: 50px;">
+                                <i class="fas fa-cog"></i> Manage Tags
+                            </button>
                         </div>
                         <div class="modal-body">
                             @if(!empty($existingTags) && is_iterable($existingTags))
